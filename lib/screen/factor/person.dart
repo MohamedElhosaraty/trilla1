@@ -1,0 +1,150 @@
+
+
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
+class Person_Screen extends StatefulWidget {
+  const Person_Screen({super.key});
+
+  @override
+  State<Person_Screen> createState() => _Person_ScreenState();
+}
+
+class _Person_ScreenState extends State<Person_Screen> {
+
+  File? image;
+
+  final imagePicker = ImagePicker();
+
+  uploadImage () async {
+     var pickerImage = await imagePicker.pickImage(
+       source: ImageSource.camera
+     );
+     if (pickerImage != null ){
+       setState(() {
+         image = File(pickerImage!.path);
+       });
+     }else{}
+  }
+
+  List information = [
+    {
+      'information' : 'الاسم',
+      'value' : 'Khaled Ramzy',
+    },
+    {
+      'information' : 'رقم الهاتف ',
+      'value' : '01554219639',
+    },
+    {
+      'information' : 'الرقم القومي',
+      'value' : '30208011207353',
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text('الملف الشخصي',style: TextStyle(
+            color:Color(0xff186987),fontWeight: FontWeight.w700,fontSize: 20
+        ),),
+        centerTitle: true,
+        leading: Text('  تعديل ',style: TextStyle(
+            color:Color(0xff999797),fontWeight: FontWeight.w700,fontSize: 20
+        ),),
+        actions: [
+          Icon(
+            Icons.arrow_forward,color:Color(0xff186987),)
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children:  [
+            const SizedBox(
+              height: 95,
+            ),
+            InkWell(
+              onTap: uploadImage,
+              child: CircleAvatar(
+                radius: 50,
+                backgroundImage: image == null ? null :
+                    FileImage(image!),
+                backgroundColor: Color(0xffD9D9D9),
+                //child: Image.asset('assets/images/addImage.png'),
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Text(
+              'عميل',style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 18,color: Colors.black
+            ),),
+            const SizedBox(
+              height: 5,
+            ),
+            Text(
+              'خالد رمزي ابو زهره',style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 25,color: Color(0xff186987)
+            ),),
+            const SizedBox(
+              height: 65,
+            ),
+            Text(
+              'المعلومات',style: TextStyle(
+              fontSize: 18,fontWeight: FontWeight.w600,
+              color: Color(0xff186987)
+            ),),
+            const SizedBox(
+              height: 15,
+            ),
+            SizedBox(
+              height: 120,
+              child: ListView.separated(
+                separatorBuilder: (context, index) {
+                  return const Divider(
+                    color: Color(0xff999797),
+                    height: 10,
+                    thickness: 2,
+                  );
+                },
+                itemCount: information.length,
+                  itemBuilder: (context ,index){
+                    return Row(
+                      children: [
+                        Text(
+                          '${information[index]['value']}',style: TextStyle(
+                            fontWeight: FontWeight.w400,fontSize: 18,
+                            color: Color(0xff186987)
+                        ),),
+                        Spacer(),
+                        Text(
+                          '${information[index]['information']}',style: TextStyle(
+                            fontWeight: FontWeight.w400,fontSize: 18,
+                            color: Colors.black
+                        ),),
+                      ],
+                    );
+                  }
+              ),
+            ),
+            const Divider(
+              color: Color(0xff999797),
+              height: 10,
+              thickness: 2,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
