@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 
 class Waiting_Screen extends StatelessWidget {
@@ -174,7 +175,44 @@ class Waiting_Screen extends StatelessWidget {
                       border: Border.all(  color: Color(0xff999797)),
                     ),
                     child: MaterialButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          AwesomeDialog(
+                            context: context,
+                            dialogType: DialogType.question,
+                            animType: AnimType.bottomSlide,
+                            title: 'هل تريد حذف الحساب ؟',
+                            titleTextStyle: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                                color: Colors.black
+                            ),
+                            desc: 'سيتم حذف الطلب نهائيًا ولن تتمكن من الوصول إليه مجددًا',
+                            descTextStyle: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: Color(0xff999797)
+                            ),
+                            btnCancel: TextButton(
+                              onPressed : (){},
+                              child: const Text(
+                                'إلغاء',style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black
+                              ),),
+                            ),
+                            btnOk: TextButton(
+                              onPressed:    (){},
+                              child: const Text(
+                                'تأكيد',style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color(0xffBB1515)
+                              ),
+                              ),
+                            ),
+                          ).show();
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [

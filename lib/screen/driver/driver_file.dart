@@ -1,19 +1,18 @@
-
-
 import 'dart:io';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class Person_Screen extends StatefulWidget {
-  const Person_Screen({super.key});
+class Driver_File extends StatefulWidget {
+  const Driver_File({super.key});
 
   @override
-  State<Person_Screen> createState() => _Person_ScreenState();
+  State<Driver_File> createState() => _Driver_FileState();
 }
 
-class _Person_ScreenState extends State<Person_Screen> {
+class _Driver_FileState extends State<Driver_File> {
+
 
   File? image;
 
@@ -142,7 +141,7 @@ class _Person_ScreenState extends State<Person_Screen> {
               height: 15,
             ),
             Text(
-              'عميل',style: TextStyle(
+              'سائق',style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 18,color: Colors.black
             ),),

@@ -1,8 +1,8 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 
-class Settings_Screen extends StatelessWidget {
-  const Settings_Screen({super.key});
+class Driver_Settting extends StatelessWidget {
+  const Driver_Settting({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,31 +30,31 @@ class Settings_Screen extends StatelessWidget {
           child: Column(
             children: [
               Container(
-            width: double.infinity,
-            height: size.height*.10,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-              border: Border.all(  color: Color(0xff999797)),
-            ),
-            child: MaterialButton(
-              onPressed: (){},
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    'اعدادات الملف الشخصي',style: TextStyle(
-                    fontWeight: FontWeight.w600,fontSize: 25,
-                    color: Colors.black
-                  ),),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30.0),
-                    child: Icon(
-                      Icons.settings,color: Color(0xff186987),size: 70,),
-                  ),
-                ],
-              )
-            ),
-          ),
+                width: double.infinity,
+                height: size.height*.10,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(  color: Color(0xff999797)),
+                ),
+                child: MaterialButton(
+                    onPressed: (){},
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          'اعدادات الملف الشخصي',style: TextStyle(
+                            fontWeight: FontWeight.w600,fontSize: 25,
+                            color: Colors.black
+                        ),),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30.0),
+                          child: Icon(
+                            Icons.settings,color: Color(0xff186987),size: 70,),
+                        ),
+                      ],
+                    )
+                ),
+              ),
               SizedBox(
                 height: 25,
               ),
@@ -75,10 +75,10 @@ class Settings_Screen extends StatelessWidget {
                             fontWeight: FontWeight.w600,fontSize: 25,
                             color: Colors.black
                         ),),
-                       Padding(
-                         padding: const EdgeInsets.only(left: 30.0),
-                         child: Image.asset('assets/images/setting2.png'),
-                       )
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30.0),
+                          child: Image.asset('assets/images/setting2.png'),
+                        )
                       ],
                     )
                 ),
@@ -154,14 +154,14 @@ class Settings_Screen extends StatelessWidget {
                 child: MaterialButton(
                     onPressed: () {
                       AwesomeDialog (
-                          context: context,
-                         dialogType: DialogType.question,
+                        context: context,
+                        dialogType: DialogType.question,
                         animType: AnimType.bottomSlide,
                         title: 'هل تريد حذف الحساب ؟',
                         titleTextStyle: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18,
-                          color: Colors.black
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                            color: Colors.black
                         ),
                         desc: 'سيتم حذف الحساب نهائيًا ولن تتمكن من الوصول إليه مجددًا',
                         descTextStyle: TextStyle(
@@ -172,22 +172,22 @@ class Settings_Screen extends StatelessWidget {
                         btnCancel: TextButton(
                           onPressed : (){},
                           child: const Text(
-                          'إلغاء',style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black
-                        ),),
+                            'إلغاء',style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black
+                          ),),
                         ),
-                          btnOk: TextButton(
-                             onPressed:    (){},
-                            child: const Text(
-                              'تأكيد',style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xffBB1515)
-                            ),
-                            ),
+                        btnOk: TextButton(
+                          onPressed:    (){},
+                          child: const Text(
+                            'تأكيد',style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xffBB1515)
                           ),
+                          ),
+                        ),
                       ).show();
                     },
                     child: Row(
