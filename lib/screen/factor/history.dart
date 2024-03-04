@@ -13,14 +13,14 @@ class History_Screen extends StatelessWidget {
               color:Color(0xff186987),fontWeight: FontWeight.w700,fontSize: 20
           ),),
           centerTitle: true,
-          leading: Icon(
-            Icons.notifications_outlined,
-            color:Color(0xff186987),
-            size: 30,),
-          actions: [
-            Icon(
-              Icons.menu,color:Color(0xff186987),)
-          ],
+          // leading: Icon(
+          //   Icons.notifications_outlined,
+          //   color:Color(0xff186987),
+          //   size: 30,),
+          // actions: [
+          //   Icon(
+          //     Icons.menu,color:Color(0xff186987),)
+          // ],
         ),
         body: SizedBox(
           height: double.infinity,

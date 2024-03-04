@@ -1,5 +1,9 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:trilla1/screen/driver/driver_password.dart';
+import 'package:trilla1/screen/driver/driver_person.dart';
+import 'package:trilla1/screen/driver/login/login.dart';
+import 'package:trilla1/screen/factor/login.dart';
 
 class Driver_Settting extends StatelessWidget {
   const Driver_Settting({super.key});
@@ -37,7 +41,10 @@ class Driver_Settting extends StatelessWidget {
                   border: Border.all(  color: Color(0xff999797)),
                 ),
                 child: MaterialButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Driver_Person(),));
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -66,7 +73,10 @@ class Driver_Settting extends StatelessWidget {
                   border: Border.all(  color: Color(0xff999797)),
                 ),
                 child: MaterialButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Driver_Password(),));
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -94,7 +104,10 @@ class Driver_Settting extends StatelessWidget {
                   border: Border.all(  color: Color(0xff999797)),
                 ),
                 child: MaterialButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      // Navigator.push(context, MaterialPageRoute(
+                      //   builder: (context) => Driver_Password(),));
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -123,7 +136,10 @@ class Driver_Settting extends StatelessWidget {
                   border: Border.all(  color: Color(0xff999797)),
                 ),
                 child: MaterialButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Login_Screen(),));
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [

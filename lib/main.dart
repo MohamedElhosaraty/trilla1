@@ -26,6 +26,7 @@ import 'package:trilla1/screen/factor/request_detilts/waiting.dart';
 import 'package:trilla1/screen/factor/requests.dart';
 import 'package:trilla1/screen/factor/settings.dart';
 import 'package:trilla1/screen/factor/sign_up.dart';
+import 'package:trilla1/screen/splash.dart';
 
 
 void main() {
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         primaryColor:  Color(0xff186987),
       ),
-      home: Bottom_Navigation(),
+      home: Splash_Screen(),
     );
   }
 }

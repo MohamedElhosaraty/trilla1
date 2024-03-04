@@ -16,9 +16,9 @@ class _Bottom_NavigationState extends State<Bottom_Navigation> {
 
   List screen =
   [
+    Person_Screen(),
     History_Screen(),
     Requests_Screen(),
-    Person_Screen(),
   ];
 
 

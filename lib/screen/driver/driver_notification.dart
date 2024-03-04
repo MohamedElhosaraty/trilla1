@@ -43,8 +43,13 @@ class _Driver_NotificationState extends State<Driver_Notification> {
           Image.asset(
               'assets/images/image2.png'),
         ],
-        leading: Icon(
-          Icons.close,size: 30,color: Colors.black,),
+        leading: IconButton(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.close,size: 30,color: Colors.black,),
+        ),
       ),
       body: SizedBox(
         height: 500,

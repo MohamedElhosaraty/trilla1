@@ -25,8 +25,13 @@ class _Driver_Person extends State<Driver_Person> {
             color: Color(0xff186987),
           ),),
           centerTitle: true,
-          leading: Icon(
-            Icons.arrow_back,color: Colors.black,),
+          leading: IconButton(
+            onPressed: (){
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back,color: Colors.black,),
+          ),
 
         ),
         body: Padding(

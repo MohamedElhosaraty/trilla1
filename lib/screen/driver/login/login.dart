@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:trilla1/screen/driver/driver_bar.dart';
+import 'package:trilla1/screen/driver/login/sign_up.dart';
+import 'package:trilla1/screen/factor/sign_up.dart';
 
 class Login_Screen extends StatelessWidget {
   const Login_Screen({super.key});
@@ -95,7 +98,11 @@ class Login_Screen extends StatelessWidget {
                       color: Color(0x97000004),
 
                     ),
-                    child: MaterialButton(onPressed: (){},
+                    child: MaterialButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Driver_bar(),));
+
+                    },
 
                       child: Text('تسجيل الدخول',style: TextStyle(
                           fontWeight: FontWeight.w700,fontSize: 15,
@@ -109,9 +116,15 @@ class Login_Screen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(
-                        '  إنشاء حساب جديد',style: TextStyle(
-                          fontSize: 15,fontWeight: FontWeight.w600,color: Colors.white),),
+                      TextButton(
+                        onPressed:(){
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => Sing_Up(),));
+                        },
+                        child: Text(
+                          '  إنشاء حساب جديد',style: TextStyle(
+                            fontSize: 15,fontWeight: FontWeight.w600,color: Colors.white),),
+                      ),
                       Text(
                         'لا تمتلك حساب ؟',style: TextStyle(
                           fontSize: 15,fontWeight: FontWeight.w600,color: Colors.white),),
@@ -121,9 +134,14 @@ class Login_Screen extends StatelessWidget {
                   SizedBox(
                     height: 30,
                   ),
-                  Text(
-                    'رجوع للخلف',style: TextStyle(
-                      fontSize: 15,fontWeight: FontWeight.w600,color: Colors.white),),
+                  TextButton(
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      'رجوع للخلف',style: TextStyle(
+                        fontSize: 15,fontWeight: FontWeight.w600,color: Colors.white),),
+                  ),
                 ],
               ),
             ),

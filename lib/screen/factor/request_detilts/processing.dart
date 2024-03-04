@@ -16,8 +16,13 @@ class Processing_Screen extends StatelessWidget {
         ),),
         centerTitle: true,
         actions:[
-          Icon(
-            Icons.arrow_forward,color: Colors.black,),
+          IconButton(
+            onPressed: (){
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_forward,color: Colors.black,),
+          ),
         ],
       ),
       body: SingleChildScrollView(

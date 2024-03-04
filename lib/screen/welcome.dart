@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:trilla1/screen/driver/login/login.dart';
+import 'package:trilla1/screen/factor/login.dart';
 
 class Welcome_Screen extends StatelessWidget {
   const Welcome_Screen({super.key});
@@ -32,10 +34,15 @@ class Welcome_Screen extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  CircleAvatar(
-                    backgroundColor: Color(0xff186987),
-                    radius: 45,
-                    child: Icon(Icons.person,size: 70,color: Colors.white,),
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Login1_Screen(),));
+                    },
+                    child: CircleAvatar(
+                      backgroundColor: Color(0xff186987),
+                      radius: 45,
+                      child: Icon(Icons.person,size: 70,color: Colors.white,),
+                    ),
                   ),
                   SizedBox(
                     height: 10,
@@ -48,15 +55,21 @@ class Welcome_Screen extends StatelessWidget {
               ),
               Column(
                 children: [
-                  CircleAvatar(
-                    backgroundColor: Color(0xff186987),
-                    radius: 45,
-                    child: Image.asset('assets/images/car.png'),
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(
+                          builder:(context) => Login_Screen(), ));
+                    },
+                    child: CircleAvatar(
+                      backgroundColor: Color(0xff186987),
+                      radius: 45,
+                      child: Image.asset('assets/images/car.png'),
+                    ),
                   ),
                   SizedBox(
                     height: 10,
                   ),
-                  Text(
+                   Text(
                     'سائق',style: TextStyle(
                       fontWeight: FontWeight.w600,fontSize: 25
                   ),)

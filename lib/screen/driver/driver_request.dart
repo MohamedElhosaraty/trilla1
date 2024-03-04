@@ -1,5 +1,10 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:trilla1/screen/driver/driver_categry.dart';
+import 'package:trilla1/screen/driver/driver_file.dart';
+import 'package:trilla1/screen/driver/driver_notification.dart';
+import 'package:trilla1/screen/driver/driver_person.dart';
+import 'package:trilla1/screen/driver/driver_setting.dart';
 
 class Driver_Request extends StatefulWidget {
   const Driver_Request({super.key});
@@ -25,6 +30,7 @@ class _Requests_ScreenState extends State<Driver_Request>
 
     return Scaffold(
       appBar: AppBar(
+        foregroundColor: Color(0xff186987),
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(
@@ -35,10 +41,16 @@ class _Requests_ScreenState extends State<Driver_Request>
               fontSize: 20),
         ),
         centerTitle: true,
-        leading: Icon(
-          Icons.notifications_outlined,
-          color: Color(0xff186987),
-          size: 30,
+        leading: IconButton(
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) => Driver_Notification(),));
+          },
+          icon: Icon(
+            Icons.notifications_outlined,
+            color: Color(0xff186987),
+            size: 30,
+          ),
         ),
         bottom: TabBar(
           onTap: (index) {
@@ -1144,7 +1156,10 @@ class _Requests_ScreenState extends State<Driver_Request>
                   border: Border.all(),
                 ),
                 child: MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Driver_File(),));
+                    },
                     child: Text(
                       'الملف الشخصي ',
                       style: TextStyle(
@@ -1165,7 +1180,11 @@ class _Requests_ScreenState extends State<Driver_Request>
                   border: Border.all(),
                 ),
                 child: MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Driver_Categry(),));
+
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -1195,7 +1214,10 @@ class _Requests_ScreenState extends State<Driver_Request>
                   border: Border.all(),
                 ),
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => Driver_Settting(),));
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [

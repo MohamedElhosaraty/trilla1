@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:trilla1/screen/factor/category.dart';
+import 'package:trilla1/screen/factor/notification.dart';
+import 'package:trilla1/screen/factor/person.dart';
+import 'package:trilla1/screen/factor/request_detilts/accept.dart';
+import 'package:trilla1/screen/factor/request_detilts/processing.dart';
+import 'package:trilla1/screen/factor/request_detilts/unaccept.dart';
+import 'package:trilla1/screen/factor/request_detilts/waiting.dart';
+import 'package:trilla1/screen/factor/settings.dart';
 
 class Requests_Screen extends StatefulWidget {
   const Requests_Screen({super.key});
@@ -21,16 +29,23 @@ class _Requests_ScreenState extends State<Requests_Screen> with SingleTickerProv
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        foregroundColor: Color(0xff186987),
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text('الطلبات',style: TextStyle(
             color:Color(0xff186987),fontWeight: FontWeight.w700,fontSize: 20
         ),),
         centerTitle: true,
-        leading: Icon(
-          Icons.notifications_outlined,
-          color:Color(0xff186987),
-          size: 30,),
+        leading: IconButton(
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) => Notification_Screen(),));
+          },
+          icon: Icon(
+            Icons.notifications_outlined,
+            color:Color(0xff186987),
+            size: 30,),
+        ),
         bottom: TabBar(
           onTap: (index){
             setState(() {
@@ -137,39 +152,45 @@ class _Requests_ScreenState extends State<Requests_Screen> with SingleTickerProv
             itemBuilder: (context ,index){
               return  Padding(
                 padding: EdgeInsetsDirectional.all(10),
-                child: Container(
-                  width: 380,
-                  height: 120,
-                  padding: EdgeInsetsDirectional.all(10),
-                  decoration: BoxDecoration(
-                      color: Color(0xffF5F5F5),
-                    borderRadius: BorderRadius.circular(10)
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text('نوع الشحنه',style: TextStyle(
-                            fontWeight: FontWeight.w600,fontSize: 18,
-                            color: Colors.black
-                          ),),
-                          Text('التاريخ',style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff999797)
-                          ),),
-                          Text('وقت الرفض',style: TextStyle(
+                child: InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Unaccept_Screen(),));
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width*.80,
+                    height: 120,
+                    padding: EdgeInsetsDirectional.all(10),
+                    decoration: BoxDecoration(
+                        color: Color(0xffF5F5F5),
+                      borderRadius: BorderRadius.circular(10)
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text('نوع الشحنه',style: TextStyle(
+                              fontWeight: FontWeight.w600,fontSize: 18,
+                              color: Colors.black
+                            ),),
+                            Text('التاريخ',style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xffBB1515)
-                          ),)
-                        ],
-                      ),
-                      Icon(
-                        Icons.cancel,size: 80,color: Color(0xff186987),),
-                    ],
+                              color: Color(0xff999797)
+                            ),),
+                            Text('وقت الرفض',style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xffBB1515)
+                            ),)
+                          ],
+                        ),
+                        Icon(
+                          Icons.cancel,size: 80,color: Color(0xff186987),),
+                      ],
+                    ),
                   ),
                 ),
               );
@@ -180,86 +201,49 @@ class _Requests_ScreenState extends State<Requests_Screen> with SingleTickerProv
             itemBuilder: (context ,index){
               return  Padding(
                 padding: EdgeInsetsDirectional.all(10),
-                child: Container(
-                  width: 380,
-                  height: 120,
-                  padding: EdgeInsetsDirectional.all(10),
-                  decoration: BoxDecoration(
-                      color: Color(0xffF5F5F5),
-                      borderRadius: BorderRadius.circular(10)
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text('نوع الشحنه',style: TextStyle(
-                              fontWeight: FontWeight.w600,fontSize: 18,
-                              color: Colors.black
-                          ),),
-                          Text('التاريخ',style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff999797)
-                          ),),
-                          Text('وقت التسليم',style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff15BB1B)
-                          ),)
-                        ],
-                      ),
-                      CircleAvatar(
-                        radius: 40,
-                        backgroundColor: Color(0xff186987),
-                        child: Icon(
-                          Icons.check,size: 80,color: Colors.white,),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
-          ListView.builder(
-            itemCount: 3,
-            itemBuilder: (context ,index){
-              return  Padding(
-                padding: EdgeInsetsDirectional.all(10),
-                child: Container(
-                  width: 380,
-                  height: 120,
-                  padding: EdgeInsetsDirectional.all(10),
-                  decoration: BoxDecoration(
-                      color: Color(0xffF5F5F5),
-                      borderRadius: BorderRadius.circular(10)
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text('نوع الشحنه',style: TextStyle(
-                              fontWeight: FontWeight.w600,fontSize: 18,
-                              color: Colors.black
-                          ),),
-                          Text('التاريخ',style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff999797)
-                          ),),
-                          Text('وقت التحميل',style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff999797)
-                          ),),
-                        ],
-                      ),
-                     Image.asset(
-                         'assets/images/clockcheck.png',scale: .90,)
-                    ],
+                child: InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => Accept_Screen(),));
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width*.80,
+                    height: 120,
+                    padding: EdgeInsetsDirectional.all(10),
+                    decoration: BoxDecoration(
+                        color: Color(0xffF5F5F5),
+                        borderRadius: BorderRadius.circular(10)
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text('نوع الشحنه',style: TextStyle(
+                                fontWeight: FontWeight.w600,fontSize: 18,
+                                color: Colors.black
+                            ),),
+                            Text('التاريخ',style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff999797)
+                            ),),
+                            Text('وقت التسليم',style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff15BB1B)
+                            ),)
+                          ],
+                        ),
+                        CircleAvatar(
+                          radius: 40,
+                          backgroundColor: Color(0xff186987),
+                          child: Icon(
+                            Icons.check,size: 80,color: Colors.white,),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );
@@ -270,39 +254,94 @@ class _Requests_ScreenState extends State<Requests_Screen> with SingleTickerProv
             itemBuilder: (context ,index){
               return  Padding(
                 padding: EdgeInsetsDirectional.all(10),
-                child: Container(
-                  width: 380,
-                  height: 120,
-                  padding: EdgeInsetsDirectional.all(10),
-                  decoration: BoxDecoration(
-                      color: Color(0xffF5F5F5),
-                      borderRadius: BorderRadius.circular(10)
+                child: InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => Processing_Screen(),));
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width*.80,
+                    height: 120,
+                    padding: EdgeInsetsDirectional.all(10),
+                    decoration: BoxDecoration(
+                        color: Color(0xffF5F5F5),
+                        borderRadius: BorderRadius.circular(10)
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text('نوع الشحنه',style: TextStyle(
+                                fontWeight: FontWeight.w600,fontSize: 18,
+                                color: Colors.black
+                            ),),
+                            Text('التاريخ',style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff999797)
+                            ),),
+                            Text('وقت التحميل',style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff999797)
+                            ),),
+                          ],
+                        ),
+                       Image.asset(
+                           'assets/images/clockcheck.png',scale: .90,)
+                      ],
+                    ),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text('نوع الشحنه',style: TextStyle(
-                              fontWeight: FontWeight.w600,fontSize: 18,
-                              color: Colors.black
-                          ),),
-                          Text('التاريخ',style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff999797)
-                          ),),
-                          Text('الوقت',style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff999797)
-                          ),),
-                        ],
-                      ),
-                      Image.asset(
-                        'assets/images/clock.png',scale: .80,)
-                    ],
+                ),
+              );
+            },
+          ),
+          ListView.builder(
+            itemCount: 3,
+            itemBuilder: (context ,index){
+              return  Padding(
+                padding: EdgeInsetsDirectional.all(10),
+                child: InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => Waiting_Screen(),));
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width*.80,
+                    height: 120,
+                    padding: EdgeInsetsDirectional.all(10),
+                    decoration: BoxDecoration(
+                        color: Color(0xffF5F5F5),
+                        borderRadius: BorderRadius.circular(10)
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text('نوع الشحنه',style: TextStyle(
+                                fontWeight: FontWeight.w600,fontSize: 18,
+                                color: Colors.black
+                            ),),
+                            Text('التاريخ',style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff999797)
+                            ),),
+                            Text('الوقت',style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff999797)
+                            ),),
+                          ],
+                        ),
+                        Image.asset(
+                          'assets/images/clock.png',scale: .80,)
+                      ],
+                    ),
                   ),
                 ),
               );
@@ -318,8 +357,13 @@ class _Requests_ScreenState extends State<Requests_Screen> with SingleTickerProv
               SizedBox(
                 height: 50,
               ),
-              Icon(
-                Icons.close,size: 30,color: Colors.black,),
+              IconButton(
+                onPressed: (){
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.close,size: 30,color: Colors.black,),
+              ),
               SizedBox(
                 height: 15,
               ),
@@ -391,7 +435,10 @@ class _Requests_ScreenState extends State<Requests_Screen> with SingleTickerProv
                   border: Border.all(),
                 ),
                 child: MaterialButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Person_Screen(),));
+                    },
                     child: Text(
                       'الملف الشخصي ',style: TextStyle(
                         fontWeight: FontWeight.w700,
@@ -413,7 +460,10 @@ class _Requests_ScreenState extends State<Requests_Screen> with SingleTickerProv
                   border: Border.all(),
                 ),
                 child: MaterialButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Category_Screen(),));
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -445,7 +495,10 @@ class _Requests_ScreenState extends State<Requests_Screen> with SingleTickerProv
                   border: Border.all(),
                 ),
                 child: MaterialButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Settings_Screen(),));
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [

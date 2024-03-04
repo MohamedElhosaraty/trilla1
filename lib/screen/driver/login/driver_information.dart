@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trilla1/screen/driver/login/driver_information2.dart';
 
 class Driver_Information extends StatelessWidget {
   const Driver_Information({super.key});
@@ -118,7 +119,11 @@ class Driver_Information extends StatelessWidget {
                         color: Color(0x97000004),
 
                       ),
-                      child: MaterialButton(onPressed: (){},
+                      child: MaterialButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => Driver_Information2(),));
+
+                      },
 
                         child: Text(' متابعة',style: TextStyle(
                             fontWeight: FontWeight.w700,fontSize: 15,
@@ -129,9 +134,14 @@ class Driver_Information extends StatelessWidget {
                     SizedBox(
                       height: 30,
                     ),
-                    Text(
-                      'رجوع للخلف',style: TextStyle(
-                        fontSize: 15,fontWeight: FontWeight.w600,color: Colors.white),),
+                    TextButton(
+                      onPressed: (){
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        'رجوع للخلف',style: TextStyle(
+                          fontSize: 15,fontWeight: FontWeight.w600,color: Colors.white),),
+                    ),
                   ],
                 ),
               ),

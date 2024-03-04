@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trilla1/screen/driver/driver_bar.dart';
 
 class Driver_Information2 extends StatelessWidget {
   const Driver_Information2({super.key});
@@ -95,7 +96,11 @@ class Driver_Information2 extends StatelessWidget {
                         color: Color(0x97000004),
 
                       ),
-                      child: MaterialButton(onPressed: (){},
+                      child: MaterialButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => Driver_bar(),));
+
+                      },
 
                         child: Text(' إنشاء الحساب',style: TextStyle(
                             fontWeight: FontWeight.w700,fontSize: 15,
@@ -106,9 +111,14 @@ class Driver_Information2 extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height*.12,
                     ),
-                    Text(
-                      'رجوع للخلف',style: TextStyle(
-                        fontSize: 15,fontWeight: FontWeight.w600,color: Colors.white),),
+                    TextButton(
+                      onPressed: (){
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        'رجوع للخلف',style: TextStyle(
+                          fontSize: 15,fontWeight: FontWeight.w600,color: Colors.white),),
+                    ),
                   ],
                 ),
               ),

@@ -1,5 +1,8 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:trilla1/screen/factor/edit_password.dart';
+import 'package:trilla1/screen/factor/login.dart';
+import 'package:trilla1/screen/factor/person_file.dart';
 
 class Settings_Screen extends StatelessWidget {
   const Settings_Screen({super.key});
@@ -20,8 +23,13 @@ class Settings_Screen extends StatelessWidget {
         ),),
         centerTitle: true,
         actions: [
-          Icon(
-            Icons.arrow_forward,color: Colors.black,),
+          IconButton(
+            onPressed: (){
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_forward,color: Colors.black,),
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -37,7 +45,10 @@ class Settings_Screen extends StatelessWidget {
               border: Border.all(  color: Color(0xff999797)),
             ),
             child: MaterialButton(
-              onPressed: (){},
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => Person_File(),));
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -66,7 +77,10 @@ class Settings_Screen extends StatelessWidget {
                   border: Border.all(  color: Color(0xff999797)),
                 ),
                 child: MaterialButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Edit_Password(),));
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -123,7 +137,10 @@ class Settings_Screen extends StatelessWidget {
                   border: Border.all(  color: Color(0xff999797)),
                 ),
                 child: MaterialButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Login1_Screen(),));
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [

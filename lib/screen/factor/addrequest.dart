@@ -24,8 +24,13 @@ class _AddRequestState extends State<AddRequest> {
           ),),
           centerTitle: true,
           leading:
-            Icon(
-              Icons.arrow_back,color:Colors.black,),
+            IconButton(
+              onPressed: (){
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.arrow_back,color:Colors.black,),
+            ),
         ),
         body: Stepper(
 

@@ -115,8 +115,13 @@ class _Driver_FileState extends State<Driver_File> {
             color:Color(0xff999797),fontWeight: FontWeight.w700,fontSize: 20
         ),),
         actions: [
-          Icon(
-            Icons.arrow_forward,color:Color(0xff186987),)
+          IconButton(
+            onPressed: (){
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_forward,color:Color(0xff186987),),
+          )
         ],
       ),
       body: Padding(
