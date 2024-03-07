@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trilla1/screen/factor/history.dart';
+import 'package:trilla1/screen/factor/home.dart';
 import 'package:trilla1/screen/factor/person.dart';
 import 'package:trilla1/screen/factor/requests.dart';
 
@@ -19,6 +20,7 @@ class _Bottom_NavigationState extends State<Bottom_Navigation> {
     Person_Screen(),
     History_Screen(),
     Requests_Screen(),
+    Home_Screen(),
   ];
 
 
@@ -51,6 +53,14 @@ class _Bottom_NavigationState extends State<Bottom_Navigation> {
 
                 label: ' الطلبات',
             ),
+            BottomNavigationBarItem(
+              icon: selectedIndex == 3 ?
+              Image.asset('assets/images/home.png',color: Color(0xff186987),):
+              Image.asset('assets/images/home.png') ,
+
+              label: ' الطلبات',
+            ),
+
           ],
         onTap: (index){
             setState(() {
