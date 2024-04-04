@@ -13,7 +13,7 @@ class Bottom_Navigation extends StatefulWidget {
 
 class _Bottom_NavigationState extends State<Bottom_Navigation> {
 
-  int selectedIndex = 0;
+  int selectedIndex = 3;
 
   List screen =
   [

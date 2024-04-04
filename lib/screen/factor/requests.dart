@@ -63,10 +63,13 @@ class _Requests_ScreenState extends State<Requests_Screen> with SingleTickerProv
           tabs: [
             value == 0 ?
             Tab(
-              child: Text('مرفوضة',style: TextStyle(
-                  fontSize: 15,fontWeight: FontWeight.w600,
-                  color: Colors.white
-              ),),) :
+              child: Container(
+                width: 95,
+                child: Text('مرفوضة',style: TextStyle(
+                    fontSize: 15,fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                ),textAlign: TextAlign.center,),
+              ),) :
             Tab(
             child: Container(
               width: 95,
@@ -83,10 +86,13 @@ class _Requests_ScreenState extends State<Requests_Screen> with SingleTickerProv
             ),),
             value == 1 ?
             Tab(
-              child: Text('تمت',style: TextStyle(
-                  fontSize: 15,fontWeight: FontWeight.w600,
-                  color: Colors.white
-              ),),) :
+              child: Container(
+                width: 95,
+                child: Text('تمت',style: TextStyle(
+                    fontSize: 15,fontWeight: FontWeight.w600,
+                    color: Colors.white
+                ),textAlign: TextAlign.center,),
+              ),) :
             Tab(
               child: Container(
                 width: 95,
@@ -103,10 +109,13 @@ class _Requests_ScreenState extends State<Requests_Screen> with SingleTickerProv
               ),),
             value == 2 ?
             Tab(
-              child: Text('جاري التنفيذ',style: TextStyle(
-                  fontSize: 15,fontWeight: FontWeight.w600,
-                  color: Colors.white
-              ),),) :
+              child: Container(
+                width: 95,
+                child: Text('جاري التنفيذ',style: TextStyle(
+                    fontSize: 15,fontWeight: FontWeight.w600,
+                    color: Colors.white
+                ),textAlign: TextAlign.center,),
+              ),) :
             Tab(
               child: Container(
                 width: 95,
@@ -123,10 +132,13 @@ class _Requests_ScreenState extends State<Requests_Screen> with SingleTickerProv
               ),),
             value == 3 ?
             Tab(
-              child: Text('قيد الانتظار',style: TextStyle(
-                  fontSize: 15,fontWeight: FontWeight.w600,
-                  color: Colors.white
-              ),),) :
+              child: Container(
+                width: 95,
+                child: Text('قيد الانتظار',style: TextStyle(
+                    fontSize: 15,fontWeight: FontWeight.w600,
+                    color: Colors.white
+                ),textAlign: TextAlign.center,),
+              ),) :
             Tab(
               child: Container(
                 width: 95,
@@ -145,6 +157,7 @@ class _Requests_ScreenState extends State<Requests_Screen> with SingleTickerProv
         ],),
       ),
       body: TabBarView(
+        physics: NeverScrollableScrollPhysics(),
         controller: myController,
         children: [
           ListView.builder(

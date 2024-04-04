@@ -133,7 +133,7 @@ class Sing1_Up extends StatelessWidget {
                     height: 24,
                   ),
                   Container(
-                    width: 280,
+                    width: MediaQuery.of(context).size.width*.70,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(22),
                       color: Color(0x97000004),

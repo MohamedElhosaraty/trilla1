@@ -21,7 +21,7 @@ class Login1_Screen extends StatelessWidget {
             ),
             Container(
               width: MediaQuery.of(context).size.width*.77,
-              height: MediaQuery.of(context).size.height-350,
+              height: MediaQuery.of(context).size.height*.80,
               decoration: BoxDecoration(
                   color: Color(0xff186987),
                   borderRadius: BorderRadius.only(
@@ -65,8 +65,8 @@ class Login1_Screen extends StatelessWidget {
                   SizedBox(
                     height: 18,
                   ),
-                  Container(
-                    width: 280,
+                  Padding(
+                    padding: EdgeInsetsDirectional.symmetric(horizontal: 20),
                     child: TextFormField(
                       textDirection: TextDirection.rtl,
                       decoration: InputDecoration(
@@ -92,7 +92,7 @@ class Login1_Screen extends StatelessWidget {
                     height: 24,
                   ),
                   Container(
-                    width: 280,
+                    width: MediaQuery.of(context).size.width*.70,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(22),
                       color: Color(0x97000004),
