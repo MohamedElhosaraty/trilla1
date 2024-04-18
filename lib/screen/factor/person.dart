@@ -27,8 +27,8 @@ class _Person_ScreenState extends State<Person_Screen> {
     if(image == null ){
       AwesomeDialog (
         context: context,
-        dialogType: DialogType.question,
-        animType: AnimType.bottomSlide,
+        dialogType: DialogType.QUESTION,
+        animType: AnimType.BOTTOMSLIDE,
         btnCancel: Column(
           children: [
             InkWell(

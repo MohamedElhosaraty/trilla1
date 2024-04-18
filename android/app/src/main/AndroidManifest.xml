@@ -2,8 +2,8 @@
     package="com.trilla1.trilla1">
    <application
         android:label="trilla1"
-        android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon">
+        android:name="${applicationName}">
+<!--        android:icon="@mipmap/launcher_icon">-->
         <activity
             android:name=".MainActivity"
             android:exported="true"

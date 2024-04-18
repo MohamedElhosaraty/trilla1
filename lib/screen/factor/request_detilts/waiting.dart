@@ -183,8 +183,8 @@ class Waiting_Screen extends StatelessWidget {
                         onPressed: (){
                           AwesomeDialog(
                             context: context,
-                            dialogType: DialogType.question,
-                            animType: AnimType.bottomSlide,
+                            dialogType: DialogType.QUESTION,
+                            animType: AnimType.BOTTOMSLIDE,
                             title: 'هل تريد حذف الحساب ؟',
                             titleTextStyle: TextStyle(
                                 fontWeight: FontWeight.w600,
