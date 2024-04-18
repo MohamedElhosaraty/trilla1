@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.trilla1.trilla1">
    <application
-        android:label="trilla1"
-        android:name="${applicationName}">
-<!--        android:icon="@mipmap/launcher_icon">-->
+        android:label="شحنتى"
+        android:name="${applicationName}"
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"

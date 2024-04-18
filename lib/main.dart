@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:trilla1/screen/factor/home.dart';
 import 'package:trilla1/screen/splash.dart';
 
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trilla1/screen/driver/driver_bar.dart';
 import 'package:trilla1/screen/driver/login/sign_up.dart';
-import 'package:trilla1/screen/factor/sign_up.dart';
 
 class Login_Screen extends StatelessWidget {
   const Login_Screen({super.key});
@@ -21,7 +20,6 @@ class Login_Screen extends StatelessWidget {
             ),
             Container(
               width: MediaQuery.of(context).size.width*.77,
-              height: MediaQuery.of(context).size.height-350,
               decoration: BoxDecoration(
                   color: Color(0xff186987),
                   borderRadius: BorderRadius.only(
@@ -65,8 +63,8 @@ class Login_Screen extends StatelessWidget {
                   SizedBox(
                     height: 18,
                   ),
-                  Container(
-                    width: 280,
+                  Padding(
+                    padding: EdgeInsetsDirectional.symmetric(horizontal: 20),
                     child: TextFormField(
                       textDirection: TextDirection.rtl,
                       decoration: InputDecoration(
@@ -91,23 +89,26 @@ class Login_Screen extends StatelessWidget {
                   SizedBox(
                     height: 24,
                   ),
-                  Container(
-                    width: 280,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(22),
-                      color: Color(0x97000004),
+                  Padding(
+                    padding: EdgeInsetsDirectional.symmetric(horizontal: 20),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(22),
+                        color: Color(0x97000004),
 
-                    ),
-                    child: MaterialButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => Driver_bar(),));
+                      ),
+                      child: MaterialButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => Driver_bar(),));
 
-                    },
+                      },
 
-                      child: Text('تسجيل الدخول',style: TextStyle(
-                          fontWeight: FontWeight.w700,fontSize: 15,
-                          color: Colors.white
-                      ),),
+                        child: Text('تسجيل الدخول',style: TextStyle(
+                            fontWeight: FontWeight.w700,fontSize: 15,
+                            color: Colors.white
+                        ),),
+                      ),
                     ),
                   ),
                   SizedBox(

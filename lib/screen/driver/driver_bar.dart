@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:trilla1/screen/driver/driver_file.dart';
 import 'package:trilla1/screen/driver/driver_request.dart';
 import 'package:trilla1/screen/driver/payment_time.dart';
-import 'package:trilla1/screen/factor/history.dart';
-import 'package:trilla1/screen/factor/person.dart';
-import 'package:trilla1/screen/factor/requests.dart';
 
 class Driver_bar extends StatefulWidget {
   const Driver_bar({super.key});
@@ -15,7 +12,7 @@ class Driver_bar extends StatefulWidget {
 
 class _Driver_barState extends State<Driver_bar> {
 
-  int selectedIndex = 0;
+  int selectedIndex = 2;
 
   List screen =
   [
@@ -43,8 +40,8 @@ class _Driver_barState extends State<Driver_bar> {
           ),
           BottomNavigationBarItem(
             icon: selectedIndex == 1 ?
-            Image.asset('assets/images/icons2.png',color: Color(0xff186987),):
-            Image.asset('assets/images/icons2.png') ,
+            Image.asset('assets/images/wallet.png',color: Color(0xff186987),):
+            Image.asset('assets/images/wallet.png') ,
             label:' السجل',
           ),
           BottomNavigationBarItem(

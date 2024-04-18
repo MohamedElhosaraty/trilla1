@@ -531,6 +531,9 @@ class _Requests_ScreenState extends State<Requests_Screen> with SingleTickerProv
                     ),
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),
