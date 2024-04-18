@@ -68,12 +68,16 @@ class _Requests_ScreenState extends State<Driver_Request>
           tabs: [
             value == 0
                 ? Tab(
-                    child: Text(
-                      'المنتهية',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white),
+                    child: Container(
+                      width: 95,
+                      alignment: Alignment.center,
+                      child: Text(
+                        'المنتهية',
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
+                      ),
                     ),
                   )
                 : Tab(
@@ -95,12 +99,16 @@ class _Requests_ScreenState extends State<Driver_Request>
                   ),
             value == 1
                 ? Tab(
-                    child: Text(
-                      'الحالية',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white),
+                    child: Container(
+                      width: 95,
+                      alignment: Alignment.center,
+                      child: Text(
+                        'الحالية',
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
+                      ),
                     ),
                   )
                 : Tab(
@@ -122,12 +130,16 @@ class _Requests_ScreenState extends State<Driver_Request>
                   ),
             value == 2
                 ? Tab(
-                    child: Text(
-                      'قيد الانتظار',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white),
+                    child: Container(
+                      width: 95,
+                      alignment: Alignment.center,
+                      child: Text(
+                        'قيد الانتظار',
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
+                      ),
                     ),
                   )
                 : Tab(
@@ -152,6 +164,7 @@ class _Requests_ScreenState extends State<Driver_Request>
       ),
       body: TabBarView(
         controller: myController,
+        physics: NeverScrollableScrollPhysics(),
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,

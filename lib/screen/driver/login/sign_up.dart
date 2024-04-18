@@ -20,7 +20,6 @@ class Sing_Up extends StatelessWidget {
             ),
             Container(
               width: MediaQuery.of(context).size.width*.77,
-              height: MediaQuery.of(context).size.height-250,
               decoration: BoxDecoration(
                   color: Color(0xff186987),
                   borderRadius: BorderRadius.only(
@@ -132,23 +131,26 @@ class Sing_Up extends StatelessWidget {
                   SizedBox(
                     height: 24,
                   ),
-                  Container(
-                    width: 280,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(22),
-                      color: Color(0x97000004),
+                  Padding(
+                    padding: EdgeInsetsDirectional.symmetric(horizontal: 20),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(22),
+                        color: Color(0x97000004),
 
-                    ),
-                    child: MaterialButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => Driver_Information(),));
+                      ),
+                      child: MaterialButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => Driver_Information(),));
 
-                    },
+                      },
 
-                      child: Text(' متابعة',style: TextStyle(
-                          fontWeight: FontWeight.w700,fontSize: 15,
-                          color: Colors.white
-                      ),),
+                        child: Text(' متابعة',style: TextStyle(
+                            fontWeight: FontWeight.w700,fontSize: 15,
+                            color: Colors.white
+                        ),),
+                      ),
                     ),
                   ),
                   SizedBox(

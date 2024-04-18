@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:trilla1/screen/driver/login/driver_information2.dart';
 
 class Driver_Information extends StatelessWidget {
@@ -21,7 +23,6 @@ class Driver_Information extends StatelessWidget {
               ),
               Container(
                 width: MediaQuery.of(context).size.width*.77,
-                height: MediaQuery.of(context).size.height-350,
                 decoration: BoxDecoration(
                     color: Color(0xff186987),
                     borderRadius: BorderRadius.only(
@@ -66,8 +67,8 @@ class Driver_Information extends StatelessWidget {
                     SizedBox(
                       height: 18,
                     ),
-                    Container(
-                      width: 280,
+                    Padding(
+                      padding: EdgeInsetsDirectional.symmetric(horizontal: 20),
                       child: TextFormField(
                         textDirection: TextDirection.rtl,
                         decoration: InputDecoration(
@@ -89,8 +90,8 @@ class Driver_Information extends StatelessWidget {
                     SizedBox(
                       height: 18,
                     ),
-                    Container(
-                      width: 280,
+                    Padding(
+                      padding: EdgeInsetsDirectional.symmetric(horizontal: 20),
                       child: TextFormField(
                         textDirection: TextDirection.rtl,
                         decoration: InputDecoration(
@@ -112,23 +113,26 @@ class Driver_Information extends StatelessWidget {
                     SizedBox(
                       height: 45,
                     ),
-                    Container(
-                      width: 280,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(22),
-                        color: Color(0x97000004),
+                    Padding(
+                      padding: EdgeInsetsDirectional.symmetric(horizontal: 20),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(22),
+                          color: Color(0x97000004),
 
-                      ),
-                      child: MaterialButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => Driver_Information2(),));
+                        ),
+                        child: MaterialButton(onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => Driver_Information2(),));
 
-                      },
+                        },
 
-                        child: Text(' متابعة',style: TextStyle(
-                            fontWeight: FontWeight.w700,fontSize: 15,
-                            color: Colors.white
-                        ),),
+                          child: Text(' متابعة',style: TextStyle(
+                              fontWeight: FontWeight.w700,fontSize: 15,
+                              color: Colors.white
+                          ),),
+                        ),
                       ),
                     ),
                     SizedBox(

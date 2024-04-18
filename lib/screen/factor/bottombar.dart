@@ -42,8 +42,8 @@ class _Bottom_NavigationState extends State<Bottom_Navigation> {
              ),
             BottomNavigationBarItem(
                 icon: selectedIndex == 1 ?
-                Image.asset('assets/images/icons2.png',color: Color(0xff186987),):
-                Image.asset('assets/images/icons2.png') ,
+                Image.asset('assets/images/Clock2.png',color: Color(0xff186987),):
+                Image.asset('assets/images/Clock2.png') ,
                 label:' السجل',
             ),
             BottomNavigationBarItem(
