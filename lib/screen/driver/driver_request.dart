@@ -1059,10 +1059,19 @@ class _Requests_ScreenState extends State<Driver_Request>
               SizedBox(
                 height: 50,
               ),
-              Icon(
-                Icons.close,
-                size: 30,
-                color: Colors.black,
+              InkWell(
+                onTap: (){
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  width: double.infinity,
+                  alignment: Alignment.bottomLeft,
+                  child: Icon(
+                    Icons.close,
+                    size: 30,
+                    color: Colors.black,
+                  ),
+                ),
               ),
               SizedBox(
                 height: 15,
@@ -1253,6 +1262,9 @@ class _Requests_ScreenState extends State<Driver_Request>
                     ],
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 20,
               ),
             ],
           ),

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:trilla1/screen/driver/driver_person.dart';
 
 class Driver_File extends StatefulWidget {
   const Driver_File({super.key});
@@ -111,9 +112,15 @@ class _Driver_FileState extends State<Driver_File> {
             color:Color(0xff186987),fontWeight: FontWeight.w700,fontSize: 20
         ),),
         centerTitle: true,
-        leading: Text('  تعديل ',style: TextStyle(
-            color:Color(0xff999797),fontWeight: FontWeight.w700,fontSize: 20
-        ),),
+        leading: InkWell(
+          onTap: (){
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => Driver_Person(),));
+          },
+          child: Text('  تعديل ',style: TextStyle(
+              color:Color(0xff999797),fontWeight: FontWeight.w700,fontSize: 20
+          ),),
+        ),
         actions: [
           IconButton(
             onPressed: (){

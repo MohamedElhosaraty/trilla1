@@ -17,7 +17,7 @@ class Requests_Screen extends StatefulWidget {
 
 class _Requests_ScreenState extends State<Requests_Screen> with SingleTickerProviderStateMixin {
   late TabController myController;
-  int value =0;
+  int value = 0;
 
   @override
   void initState() {
@@ -370,12 +370,16 @@ class _Requests_ScreenState extends State<Requests_Screen> with SingleTickerProv
               SizedBox(
                 height: 50,
               ),
-              IconButton(
-                onPressed: (){
-                  Navigator.pop(context);
-                },
-                icon: Icon(
-                  Icons.close,size: 30,color: Colors.black,),
+              Container(
+                alignment: Alignment.bottomLeft,
+                width: double.infinity,
+                child: IconButton(
+                  onPressed: (){
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(
+                    Icons.close,size: 30,color: Colors.black,),
+                ),
               ),
               SizedBox(
                 height: 15,
@@ -538,7 +542,6 @@ class _Requests_ScreenState extends State<Requests_Screen> with SingleTickerProv
           ),
         ),
       ),
-
     );
   }
 }

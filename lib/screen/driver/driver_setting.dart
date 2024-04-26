@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:trilla1/screen/driver/driver_password.dart';
 import 'package:trilla1/screen/driver/driver_person.dart';
 import 'package:trilla1/screen/driver/login/login.dart';
-import 'package:trilla1/screen/factor/login.dart';
 
 class Driver_Settting extends StatelessWidget {
   const Driver_Settting({super.key});
@@ -24,8 +23,13 @@ class Driver_Settting extends StatelessWidget {
         ),),
         centerTitle: true,
         actions: [
-          Icon(
-            Icons.arrow_forward,color: Colors.black,),
+          InkWell(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Icon(
+              Icons.arrow_forward,color: Colors.black,),
+          ),
         ],
       ),
       body: SingleChildScrollView(

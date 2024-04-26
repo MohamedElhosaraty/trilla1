@@ -6,6 +6,8 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'person_file.dart';
+
 class Person_Screen extends StatefulWidget {
   const Person_Screen({super.key});
 
@@ -112,9 +114,14 @@ class _Person_ScreenState extends State<Person_Screen> {
             color:Color(0xff186987),fontWeight: FontWeight.w700,fontSize: 20
         ),),
         centerTitle: true,
-        leading: Text('  تعديل ',style: TextStyle(
-            color:Color(0xff999797),fontWeight: FontWeight.w700,fontSize: 20
-        ),),
+        leading: InkWell(
+          onTap: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Person_File(),));
+          },
+          child: Text('  تعديل ',style: TextStyle(
+              color:Color(0xff999797),fontWeight: FontWeight.w700,fontSize: 20
+          ),),
+        ),
         actions: [
           IconButton(
             onPressed: (){
@@ -162,11 +169,15 @@ class _Person_ScreenState extends State<Person_Screen> {
             const SizedBox(
               height: 65,
             ),
-            Text(
-              'المعلومات',style: TextStyle(
-                fontSize: 18,fontWeight: FontWeight.w600,
-                color: Color(0xff186987)
-            ),),
+            Container(
+              width: double.infinity,
+              alignment: Alignment.bottomRight,
+              child: Text(
+                'المعلومات',style: TextStyle(
+                  fontSize: 18,fontWeight: FontWeight.w600,
+                  color: Color(0xff186987)
+              ),),
+            ),
             const SizedBox(
               height: 15,
             ),

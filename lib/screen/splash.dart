@@ -10,12 +10,15 @@ class Splash_Screen extends StatefulWidget {
 }
 
 class _Splash_ScreenState extends State<Splash_Screen> {
-
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 5),() =>
-
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Welcome_Screen(),)));
+    Future.delayed(
+        Duration(seconds: 5),
+        () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Welcome_Screen(),
+            )));
     super.initState();
   }
 
@@ -25,8 +28,12 @@ class _Splash_ScreenState extends State<Splash_Screen> {
       body: SafeArea(
         child: Column(
           children: [
-            Lottie.asset('assets/images/splash.json',),
-            Lottie.asset('assets/images/splash2.json',)
+            Lottie.asset(
+              'assets/images/splash.json',
+            ),
+            Lottie.asset(
+              'assets/images/splash2.json',
+            ),
           ],
         ),
       ),

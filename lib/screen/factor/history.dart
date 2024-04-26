@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trilla1/screen/factor/category.dart';
+import 'package:trilla1/screen/factor/notification.dart';
 import 'package:trilla1/screen/factor/person.dart';
 import 'package:trilla1/screen/factor/settings.dart';
 
@@ -10,6 +11,17 @@ class History_Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) => Notification_Screen(),));
+            },
+            icon: Icon(
+              Icons.notifications_outlined,
+              color:Color(0xff186987),
+              size: 30,),
+          ),
+          foregroundColor: Color(0xff186987),
           backgroundColor: Colors.white,
           elevation: 0,
           title: Text('السجل',style: TextStyle(
@@ -102,12 +114,16 @@ class History_Screen extends StatelessWidget {
               SizedBox(
                 height: 50,
               ),
-              IconButton(
-                onPressed: (){
-                  Navigator.pop(context);
-                },
-                icon: Icon(
-                  Icons.close,size: 30,color: Colors.black,),
+              Container(
+                alignment: Alignment.bottomLeft,
+                width: double.infinity,
+                child: IconButton(
+                  onPressed: (){
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(
+                    Icons.close,size: 30,color: Colors.black,),
+                ),
               ),
               SizedBox(
                 height: 15,

@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       locale: Locale("ar" , ""),
-      title: 'Flutter Demo',
+      title: 'شحنتى',
 
       theme: ThemeData(
         primarySwatch: Colors.blue,

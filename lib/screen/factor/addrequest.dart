@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:trilla1/screen/factor/home.dart';
+import 'package:trilla1/screen/factor/map.dart';
 import 'package:trilla1/screen/factor/requests.dart';
 
 class AddRequest extends StatefulWidget {
@@ -165,10 +167,16 @@ class _AddRequestState extends State<AddRequest> {
                 SizedBox(
                   width: 8,
                 ),
-                Text(
-                  'استخدام عنوان من الخرائط ',style: TextStyle(
-                    fontSize: 18,fontWeight: FontWeight.w500,color: Color(0xff186987)
-                ),),
+                InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => Map_Screen(),));
+                  },
+                  child: Text(
+                    'استخدام عنوان من الخرائط ',style: TextStyle(
+                      fontSize: 18,fontWeight: FontWeight.w500,color: Color(0xff186987)
+                  ),),
+                ),
               ],
             ),
             SizedBox(
