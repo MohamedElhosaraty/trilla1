@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trilla1/screen/driver/driver_file.dart';
+import 'package:trilla1/screen/driver/driver_home.dart';
 import 'package:trilla1/screen/driver/driver_request.dart';
 import 'package:trilla1/screen/driver/payment_time.dart';
 
@@ -12,13 +13,14 @@ class Driver_bar extends StatefulWidget {
 
 class _Driver_barState extends State<Driver_bar> {
 
-  int selectedIndex = 2;
+  int selectedIndex = 3;
 
   List screen =
   [
     Driver_File(),
     Payment_Time(),
     Driver_Request(),
+    Driver_Home(),
   ];
 
 
@@ -48,6 +50,13 @@ class _Driver_barState extends State<Driver_bar> {
             icon: selectedIndex == 2 ?
             Image.asset('assets/images/icons3.png',color: Color(0xff186987),):
             Image.asset('assets/images/icons3.png') ,
+
+            label: ' الطلبات',
+          ),
+          BottomNavigationBarItem(
+            icon: selectedIndex == 3 ?
+            Image.asset('assets/images/home.png',color: Color(0xff186987),):
+            Image.asset('assets/images/home.png') ,
 
             label: ' الطلبات',
           ),

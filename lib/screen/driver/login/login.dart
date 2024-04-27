@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trilla1/screen/driver/driver_bar.dart';
 import 'package:trilla1/screen/driver/login/sign_up.dart';
+import 'package:trilla1/screen/password.dart';
 
 class Login_Screen extends StatelessWidget {
   const Login_Screen({super.key});
@@ -89,10 +90,16 @@ class Login_Screen extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 30.0),
-                      child: Text(
-                        'هل نسيت كلمة المرور ؟',textAlign: TextAlign.end,style: TextStyle(
-                        fontSize: 15,fontWeight: FontWeight.w600,color: Colors.white,
-                      ),),
+                      child: InkWell(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => Password_Screen(),));
+                        },
+                        child: Text(
+                          'هل نسيت كلمة المرور ؟',textAlign: TextAlign.end,style: TextStyle(
+                          fontSize: 15,fontWeight: FontWeight.w600,color: Colors.white,
+                        ),),
+                      ),
                     ),
                     SizedBox(
                       height: 24,

@@ -214,9 +214,10 @@ class Home_Screen extends StatelessWidget {
       ),
       body: Column(
         children: [
+
           Container(
-            height: 200,
-            color: Colors.blueAccent,
+            height: MediaQuery.of(context).size.height/3,
+            color: Colors.blue.shade200,
             alignment: Alignment.center,
             child :const Text.rich(
               textDirection: TextDirection.rtl,
@@ -248,64 +249,67 @@ class Home_Screen extends StatelessWidget {
               )
             )
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height*.13,
-          ),
-          Container(
-            height: 200,
-            width: MediaQuery.of(context).size.width*.80,
-            alignment: Alignment.center,
-            decoration:const BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.all(Radius.circular(15))
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text.rich(
-                  textDirection: TextDirection.rtl,
-                  TextSpan(
-                    text: "أهلا ,",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 18,
-                      color: Colors.white
-                    ),
-                    children: [
+          Stack(
+            children: [
+              Image.asset("assets/images/car1.jpg",),
+              Container(
+                margin: EdgeInsets.all(50),
+                height: 200,
+                width: MediaQuery.of(context).size.width*.80,
+                alignment: Alignment.center,
+                decoration:const BoxDecoration(
+                    color: Colors.black54,
+                    borderRadius: BorderRadius.all(Radius.circular(15))
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text.rich(
+                      textDirection: TextDirection.rtl,
                       TextSpan(
-                        text: " \n\nهل تحتاج لشحن البضائع ؟    "
-                      )
-                    ]
-                  ),
+                          text: "أهلا ,",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18,
+                              color: Colors.white
+                          ),
+                          children: [
+                            TextSpan(
+                                text: " \n\nهل تحتاج لشحن البضائع ؟    "
+                            )
+                          ]
+                      ),
 
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height*.05,
-                ),
-                Container(
-                  height: 40,
-                  width: MediaQuery.of(context).size.width*.35,
-                  decoration:const BoxDecoration(
-                      color: Color(0xff186987),
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                  ),
-                  child: MaterialButton(
-                    onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => AddRequest(),));
-                    },
-                    child: Text(
-                      'طلب شحنه الآن',style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white
                     ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height*.05,
                     ),
-                  ),
+                    Container(
+                      height: 40,
+                      width: MediaQuery.of(context).size.width*.35,
+                      decoration:const BoxDecoration(
+                        color: Color(0xff186987),
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                      ),
+                      child: MaterialButton(
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => AddRequest(),));
+                        },
+                        child: Text(
+                          'طلب شحنه الآن',style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white
+                        ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),

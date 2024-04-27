@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:trilla1/screen/driver/login/driver_information2.dart';
+import 'package:trilla1/screen/driver/more.dart';
+import 'package:trilla1/screen/driver/more2.dart';
 
 class Driver_Information extends StatelessWidget {
   const Driver_Information({super.key});
@@ -73,7 +75,12 @@ class Driver_Information extends StatelessWidget {
                         textDirection: TextDirection.rtl,
                         decoration: InputDecoration(
                           filled: true,
-                          suffixIcon:Icon(Icons.train_outlined,size: 40,) ,
+                          suffixIcon:InkWell(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(
+                                  builder: (context) => More2_Screen(),));
+                              },
+                              child: Icon(Icons.train_outlined,size: 40,)) ,
                           fillColor: Colors.white,
                           labelText: ' نوع سيارتك',
                           labelStyle: const TextStyle(
@@ -96,7 +103,12 @@ class Driver_Information extends StatelessWidget {
                         textDirection: TextDirection.rtl,
                         decoration: InputDecoration(
                           filled: true,
-                          suffixIcon:Icon(Icons.car_rental,size: 40,) ,
+                          suffixIcon:InkWell(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(
+                                  builder: (context) => More_Screen(),));
+                              },
+                              child: Icon(Icons.car_rental,size: 40,)) ,
                           fillColor: Colors.white,
                           labelText: '  الكماليات',
                           labelStyle: const TextStyle(
