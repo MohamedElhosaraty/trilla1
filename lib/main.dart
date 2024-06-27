@@ -1,10 +1,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:trilla1/cache/cache_helper.dart';
 import 'package:trilla1/screen/splash.dart';
 
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  CacheHelper().init();
   runApp(const MyApp());
 }
 
