@@ -1,8 +1,7 @@
 class EndPoints {
-  static String baseUrl =
-      'https://student.valuxapps.com/api/'; //'https://food-api-omega.vercel.app/api/v1/';
-  static String signIn = 'login'; //'user/signin';
-  static String signUp = 'register';
+  static String baseUrl ='https://shohnatyy.germanywestcentral.cloudapp.azure.com/api/user/';
+  static String login = 'login';
+  static String register = 'register';
   static String profile = 'profile';
 
 }
@@ -13,6 +12,7 @@ class ApiKey {
   static String token = 'token';
   static String email = 'email';
   static String password = 'password';
+  static String password_confirmation = 'password_confirmation';
   static String id = 'id';
   static String message = 'message';
   static String name = 'name';

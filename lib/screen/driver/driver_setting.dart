@@ -175,8 +175,8 @@ class Driver_Settting extends StatelessWidget {
                     onPressed: () {
                       AwesomeDialog (
                         context: context,
-                        dialogType: DialogType.QUESTION,
-                        animType: AnimType.BOTTOMSLIDE,
+                        dialogType: DialogType.question,
+                        animType: AnimType.bottomSlide,
                         title: 'هل تريد حذف الحساب ؟',
                         titleTextStyle: TextStyle(
                             fontWeight: FontWeight.w600,

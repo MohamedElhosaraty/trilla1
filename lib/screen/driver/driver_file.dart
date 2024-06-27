@@ -27,8 +27,8 @@ class _Driver_FileState extends State<Driver_File> {
     if(image == null ){
       AwesomeDialog (
         context: context,
-        dialogType: DialogType.QUESTION,
-        animType: AnimType.BOTTOMSLIDE,
+        dialogType: DialogType.question,
+        animType: AnimType.bottomSlide,
         btnCancel: Column(
           children: [
             InkWell(

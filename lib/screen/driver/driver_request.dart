@@ -970,8 +970,8 @@ class _Requests_ScreenState extends State<Driver_Request>
                                 onPressed: (){
                                   AwesomeDialog(
                                     context: context,
-                                    dialogType: DialogType.QUESTION,
-                                    animType: AnimType.BOTTOMSLIDE,
+                                    dialogType: DialogType.question,
+                                    animType: AnimType.bottomSlide,
                                     title: 'هل تريد رفض الطلب ؟',
                                     titleTextStyle: TextStyle(
                                         fontWeight: FontWeight.w600,
