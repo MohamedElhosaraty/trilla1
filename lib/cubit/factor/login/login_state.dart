@@ -6,7 +6,11 @@ class LoginInitial extends LoginState {}
 
 class LoginLoadedState extends LoginState {}
 
-class LoginSuccessState extends LoginState {}
+class LoginSuccessState extends LoginState {
+   final LoginModel loginModel;
+
+  LoginSuccessState({required this.loginModel});
+}
 
 class LoginFailureState extends LoginState {
 
