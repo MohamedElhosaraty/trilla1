@@ -13,10 +13,12 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  flutter_screenutil: ^5.9.0
   image_picker: ^1.0.4
   awesome_dialog: ^3.2.1
   lottie: ^3.1.2
   dio: ^5.4.3+1
+  intl: ^0.19.0
   flutter_bloc: ^8.1.6
   shared_preferences: ^2.2.3
 
@@ -42,3 +44,16 @@ flutter:
   assets:
     - assets/images/
   #   - images/a_dot_ham.jpeg
+  fonts:
+    - family: Tajawal
+      fonts:
+        - asset: assets/fonts/Tajawal-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Tajawal-Bold.ttf
+          weight: 400
+        - asset: assets/fonts/Tajawal-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Tajawal-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Tajawal-Light.ttf
+          weight: 300

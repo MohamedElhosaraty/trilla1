@@ -1,10 +1,12 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:trilla1/cache/cache_helper.dart';
 import 'package:trilla1/screen/driver/driver_categry.dart';
-import 'package:trilla1/screen/driver/driver_file.dart';
 import 'package:trilla1/screen/driver/driver_notification.dart';
-import 'package:trilla1/screen/driver/driver_person.dart';
-import 'package:trilla1/screen/driver/driver_setting.dart';
+
+import '../factor/person.dart';
+import '../factor/settings.dart';
 
 class Driver_Request extends StatefulWidget {
   const Driver_Request({super.key});
@@ -42,9 +44,12 @@ class _Requests_ScreenState extends State<Driver_Request>
         ),
         centerTitle: true,
         leading: IconButton(
-          onPressed: (){
-            Navigator.push(context, MaterialPageRoute(
-              builder: (context) => Driver_Notification(),));
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Driver_Notification(),
+                ));
           },
           icon: Icon(
             Icons.notifications_outlined,
@@ -175,11 +180,11 @@ class _Requests_ScreenState extends State<Driver_Request>
                 height: 30,
               ),
               Text(
-                'لا توجد شحنات',style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w500,
-                color: Colors.black
-              ),
+                'لا توجد شحنات',
+                style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black),
               )
               // Container(
               //   height: 30,
@@ -325,16 +330,19 @@ class _Requests_ScreenState extends State<Driver_Request>
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: Color(0xff186987),
-                        borderRadius: BorderRadius.only(topLeft:Radius.circular(20) ,topRight: Radius.circular(20)),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20)),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 20.0,top: 5),
+                        padding: const EdgeInsets.only(right: 20.0, top: 5),
                         child: Text(
-                          '16#',style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16,
-                        ),
+                          '16#',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                          ),
                           textAlign: TextAlign.end,
                         ),
                       ),
@@ -344,61 +352,7 @@ class _Requests_ScreenState extends State<Driver_Request>
                     ),
                     Container(
                       margin: EdgeInsetsDirectional.only(bottom: 30),
-                      width: size.width-100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xffD9D9D9)),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                            Column(
-                              children: [
-                                Text(
-                                  'وزن الشحن',style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 18,
-                                  color: Colors.black
-                                ),
-                                ),
-                                Text(
-                                  ' 250 كجم',style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 18,
-                                    color: Color(0xff999797)
-                                ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                Text(
-                                  ' نوع الشحنة',style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 18,
-                                    color: Colors.black
-                                ),
-                                ),
-                                Text(
-                                  'طماطم',style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 18,
-                                    color: Color(0xff999797)
-                                ),
-                                ),
-                              ],
-                            ),
-                          ],),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsetsDirectional.only(bottom: 30),
-                      width: size.width-100,
+                      width: size.width - 100,
                       height: 100,
                       decoration: BoxDecoration(
                         border: Border.all(color: Color(0xffD9D9D9)),
@@ -413,46 +367,102 @@ class _Requests_ScreenState extends State<Driver_Request>
                               Column(
                                 children: [
                                   Text(
-                                    ' مكان التوصيل',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Color(0xff999797)
-                                  ),
+                                    'وزن الشحن',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Colors.black),
                                   ),
                                   Text(
-                                    'الشرقية',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Colors.black
-                                  ),
+                                    ' 250 كجم',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Color(0xff999797)),
                                   ),
                                 ],
                               ),
                               Column(
                                 children: [
                                   Text(
-                                    '  مكان التحميل',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Color(0xff999797)
-                                  ),
+                                    ' نوع الشحنة',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Colors.black),
                                   ),
                                   Text(
-                                    'المنصورة',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Colors.black
-                                  ),
+                                    'طماطم',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Color(0xff999797)),
                                   ),
                                 ],
                               ),
-                            ],),
+                            ],
+                          ),
                         ],
                       ),
                     ),
                     Container(
                       margin: EdgeInsetsDirectional.only(bottom: 30),
-                      width: size.width-100,
+                      width: size.width - 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Color(0xffD9D9D9)),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Column(
+                                children: [
+                                  Text(
+                                    ' مكان التوصيل',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Color(0xff999797)),
+                                  ),
+                                  Text(
+                                    'الشرقية',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Colors.black),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  Text(
+                                    '  مكان التحميل',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Color(0xff999797)),
+                                  ),
+                                  Text(
+                                    'المنصورة',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Colors.black),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsetsDirectional.only(bottom: 30),
+                      width: size.width - 100,
                       height: 100,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
@@ -473,20 +483,19 @@ class _Requests_ScreenState extends State<Driver_Request>
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Text(
-                                '8:30 ص',style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black
-                              ),
+                                '8:30 ص',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black),
                               ),
                               Text(
-                                '2024/01/24',style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black
+                                '2024/01/24',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black),
                               ),
-                              ),
-
                             ],
                           ),
                         ],
@@ -494,7 +503,7 @@ class _Requests_ScreenState extends State<Driver_Request>
                     ),
                     Container(
                       margin: EdgeInsetsDirectional.only(bottom: 30),
-                      width: size.width-100,
+                      width: size.width - 100,
                       height: 100,
                       decoration: BoxDecoration(
                         border: Border.all(color: Color(0xffD9D9D9)),
@@ -509,46 +518,47 @@ class _Requests_ScreenState extends State<Driver_Request>
                               Column(
                                 children: [
                                   Text(
-                                    ' المسافة ',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Color(0xff999797)
-                                  ),
+                                    ' المسافة ',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Color(0xff999797)),
                                   ),
                                   Text(
-                                    '54 كم',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Colors.black
-                                  ),
+                                    '54 كم',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Colors.black),
                                   ),
                                 ],
                               ),
                               Column(
                                 children: [
                                   Text(
-                                    '   الأجر',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Color(0xff999797)
-                                  ),
+                                    '   الأجر',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Color(0xff999797)),
                                   ),
                                   Text(
-                                    '1800 ج.م',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Colors.black
-                                  ),
+                                    '1800 ج.م',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Colors.black),
                                   ),
                                 ],
                               ),
-                            ],),
+                            ],
+                          ),
                         ],
                       ),
                     ),
                     Container(
                       margin: EdgeInsetsDirectional.only(bottom: 30),
-                      width: size.width-100,
+                      width: size.width - 100,
                       height: 100,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
@@ -577,7 +587,7 @@ class _Requests_ScreenState extends State<Driver_Request>
                     ),
                     Container(
                       margin: EdgeInsetsDirectional.only(bottom: 30),
-                      width: size.width-100,
+                      width: size.width - 100,
                       height: 100,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
@@ -621,7 +631,8 @@ class _Requests_ScreenState extends State<Driver_Request>
                                 ),
                                 CircleAvatar(
                                   radius: 30,
-                                  backgroundImage: AssetImage('assets/images/image2.png'),
+                                  backgroundImage:
+                                      AssetImage('assets/images/image2.png'),
                                 ),
                               ],
                             ),
@@ -629,7 +640,6 @@ class _Requests_ScreenState extends State<Driver_Request>
                         ),
                       ),
                     ),
-
                   ],
                 ),
               ),
@@ -649,16 +659,19 @@ class _Requests_ScreenState extends State<Driver_Request>
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: Color(0xff186987),
-                        borderRadius: BorderRadius.only(topLeft:Radius.circular(20) ,topRight: Radius.circular(20)),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20)),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 20.0,top: 5),
+                        padding: const EdgeInsets.only(right: 20.0, top: 5),
                         child: Text(
-                          '16#',style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16,
-                        ),
+                          '16#',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                          ),
                           textAlign: TextAlign.end,
                         ),
                       ),
@@ -668,7 +681,7 @@ class _Requests_ScreenState extends State<Driver_Request>
                     ),
                     Container(
                       margin: EdgeInsetsDirectional.only(bottom: 30),
-                      width: size.width-100,
+                      width: size.width - 100,
                       height: 100,
                       decoration: BoxDecoration(
                         border: Border.all(color: Color(0xffD9D9D9)),
@@ -683,46 +696,47 @@ class _Requests_ScreenState extends State<Driver_Request>
                               Column(
                                 children: [
                                   Text(
-                                    'وزن الشحن',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Colors.black
-                                  ),
+                                    'وزن الشحن',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Colors.black),
                                   ),
                                   Text(
-                                    ' 250 كجم',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Color(0xff999797)
-                                  ),
+                                    ' 250 كجم',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Color(0xff999797)),
                                   ),
                                 ],
                               ),
                               Column(
                                 children: [
                                   Text(
-                                    ' نوع الشحنة',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Colors.black
-                                  ),
+                                    ' نوع الشحنة',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Colors.black),
                                   ),
                                   Text(
-                                    'طماطم',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Color(0xff999797)
-                                  ),
+                                    'طماطم',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Color(0xff999797)),
                                   ),
                                 ],
                               ),
-                            ],),
+                            ],
+                          ),
                         ],
                       ),
                     ),
                     Container(
                       margin: EdgeInsetsDirectional.only(bottom: 30),
-                      width: size.width-100,
+                      width: size.width - 100,
                       height: 100,
                       decoration: BoxDecoration(
                         border: Border.all(color: Color(0xffD9D9D9)),
@@ -737,46 +751,47 @@ class _Requests_ScreenState extends State<Driver_Request>
                               Column(
                                 children: [
                                   Text(
-                                    ' مكان التوصيل',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Color(0xff999797)
-                                  ),
+                                    ' مكان التوصيل',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Color(0xff999797)),
                                   ),
                                   Text(
-                                    'الشرقية',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Colors.black
-                                  ),
+                                    'الشرقية',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Colors.black),
                                   ),
                                 ],
                               ),
                               Column(
                                 children: [
                                   Text(
-                                    '  مكان التحميل',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Color(0xff999797)
-                                  ),
+                                    '  مكان التحميل',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Color(0xff999797)),
                                   ),
                                   Text(
-                                    'المنصورة',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Colors.black
-                                  ),
+                                    'المنصورة',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Colors.black),
                                   ),
                                 ],
                               ),
-                            ],),
+                            ],
+                          ),
                         ],
                       ),
                     ),
                     Container(
                       margin: EdgeInsetsDirectional.only(bottom: 30),
-                      width: size.width-100,
+                      width: size.width - 100,
                       height: 100,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
@@ -797,20 +812,19 @@ class _Requests_ScreenState extends State<Driver_Request>
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Text(
-                                '8:30 ص',style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black
-                              ),
+                                '8:30 ص',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black),
                               ),
                               Text(
-                                '2024/01/24',style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black
+                                '2024/01/24',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black),
                               ),
-                              ),
-
                             ],
                           ),
                         ],
@@ -818,7 +832,7 @@ class _Requests_ScreenState extends State<Driver_Request>
                     ),
                     Container(
                       margin: EdgeInsetsDirectional.only(bottom: 30),
-                      width: size.width-100,
+                      width: size.width - 100,
                       height: 100,
                       decoration: BoxDecoration(
                         border: Border.all(color: Color(0xffD9D9D9)),
@@ -833,46 +847,47 @@ class _Requests_ScreenState extends State<Driver_Request>
                               Column(
                                 children: [
                                   Text(
-                                    ' المسافة ',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Color(0xff999797)
-                                  ),
+                                    ' المسافة ',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Color(0xff999797)),
                                   ),
                                   Text(
-                                    '54 كم',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Colors.black
-                                  ),
+                                    '54 كم',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Colors.black),
                                   ),
                                 ],
                               ),
                               Column(
                                 children: [
                                   Text(
-                                    '   الأجر',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Color(0xff999797)
-                                  ),
+                                    '   الأجر',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Color(0xff999797)),
                                   ),
                                   Text(
-                                    '1800 ج.م',style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: Colors.black
-                                  ),
+                                    '1800 ج.م',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: Colors.black),
                                   ),
                                 ],
                               ),
-                            ],),
+                            ],
+                          ),
                         ],
                       ),
                     ),
                     Container(
                       margin: EdgeInsetsDirectional.only(bottom: 30),
-                      width: size.width-100,
+                      width: size.width - 100,
                       height: 100,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
@@ -901,7 +916,7 @@ class _Requests_ScreenState extends State<Driver_Request>
                     ),
                     Container(
                       margin: EdgeInsetsDirectional.only(bottom: 20),
-                      width: size.width-100,
+                      width: size.width - 100,
                       height: 100,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
@@ -945,7 +960,8 @@ class _Requests_ScreenState extends State<Driver_Request>
                                 ),
                                 CircleAvatar(
                                   radius: 30,
-                                  backgroundImage: AssetImage('assets/images/image2.png'),
+                                  backgroundImage:
+                                      AssetImage('assets/images/image2.png'),
                                 ),
                               ],
                             ),
@@ -954,20 +970,21 @@ class _Requests_ScreenState extends State<Driver_Request>
                       ),
                     ),
                     Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            width: MediaQuery.of(context).size.width*.40,
+                            width: MediaQuery.of(context).size.width * .40,
                             height: 60,
                             decoration: BoxDecoration(
                               color: Colors.red,
                               borderRadius: BorderRadius.circular(10),
-                              border: Border.all(  color: Color(0xff999797)),
+                              border: Border.all(color: Color(0xff999797)),
                             ),
                             child: MaterialButton(
-                                onPressed: (){
+                                onPressed: () {
                                   AwesomeDialog(
                                     context: context,
                                     dialogType: DialogType.question,
@@ -976,31 +993,31 @@ class _Requests_ScreenState extends State<Driver_Request>
                                     titleTextStyle: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 18,
-                                        color: Colors.black
-                                    ),
-                                    desc: 'سيتم حذف الطلب نهائيًا ولن تتمكن من الوصول إليه مجددًا',
+                                        color: Colors.black),
+                                    desc:
+                                        'سيتم حذف الطلب نهائيًا ولن تتمكن من الوصول إليه مجددًا',
                                     descTextStyle: TextStyle(
                                         fontWeight: FontWeight.w500,
                                         fontSize: 16,
-                                        color: Color(0xff999797)
-                                    ),
+                                        color: Color(0xff999797)),
                                     btnCancel: TextButton(
-                                      onPressed : (){},
+                                      onPressed: () {},
                                       child: const Text(
-                                        'إلغاء',style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.black
-                                      ),),
+                                        'إلغاء',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black),
+                                      ),
                                     ),
                                     btnOk: TextButton(
-                                      onPressed:    (){},
+                                      onPressed: () {},
                                       child: const Text(
-                                        'تأكيد',style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          color: Color(0xffBB1515)
-                                      ),
+                                        'تأكيد',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w500,
+                                            color: Color(0xffBB1515)),
                                       ),
                                     ),
                                   ).show();
@@ -1009,46 +1026,46 @@ class _Requests_ScreenState extends State<Driver_Request>
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      ' رفض الطلب  ',style: TextStyle(
-                                        fontWeight: FontWeight.w600,fontSize: 18,
-                                        color: Colors.black
-                                    ),),
+                                      ' رفض الطلب  ',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18,
+                                          color: Colors.black),
+                                    ),
                                   ],
-                                )
-                            ),
+                                )),
                           ),
                           Container(
-                            width: MediaQuery.of(context).size.width*.40,
+                            width: MediaQuery.of(context).size.width * .40,
                             height: 60,
                             decoration: BoxDecoration(
                               color: Color(0xff186987),
                               borderRadius: BorderRadius.circular(10),
-                              border: Border.all(  color: Color(0xff999797)),
+                              border: Border.all(color: Color(0xff999797)),
                             ),
                             child: MaterialButton(
-                                onPressed: (){},
+                                onPressed: () {},
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      '  قبول الطلب',style: TextStyle(
-                                        fontWeight: FontWeight.w600,fontSize: 18,
-                                        color: Colors.black
-                                    ),),
+                                      '  قبول الطلب',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18,
+                                          color: Colors.black),
+                                    ),
                                   ],
-                                )
-                            ),
+                                )),
                           ),
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
             ),
           ),
-
         ],
       ),
       endDrawer: Drawer(
@@ -1060,7 +1077,7 @@ class _Requests_ScreenState extends State<Driver_Request>
                 height: 50,
               ),
               InkWell(
-                onTap: (){
+                onTap: () {
                   Navigator.pop(context);
                 },
                 child: Container(
@@ -1077,7 +1094,7 @@ class _Requests_ScreenState extends State<Driver_Request>
                 height: 15,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Column(
                     children: [
@@ -1089,13 +1106,16 @@ class _Requests_ScreenState extends State<Driver_Request>
                             color: Colors.black),
                       ),
                       Text(
-                        ':  الاسم   ',
+                        CacheHelper().getDataString(key: "name")!,
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
                             color: Color(0xff186987)),
                       ),
                     ],
+                  ),
+                  SizedBox(
+                    width: 20.w,
                   ),
                   CircleAvatar(
                     radius: 50,
@@ -1170,7 +1190,7 @@ class _Requests_ScreenState extends State<Driver_Request>
                 height: 50,
               ),
               Container(
-                width: MediaQuery.of(context).size.width * .45,
+                width: MediaQuery.of(context).size.width * .5,
                 height: 60,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -1179,8 +1199,11 @@ class _Requests_ScreenState extends State<Driver_Request>
                 ),
                 child: MaterialButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => Driver_File(),));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Person_Screen(),
+                          ));
                     },
                     child: Text(
                       'الملف الشخصي ',
@@ -1203,9 +1226,11 @@ class _Requests_ScreenState extends State<Driver_Request>
                 ),
                 child: MaterialButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => Driver_Categry(),));
-
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Driver_Categry(),
+                          ));
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -1225,7 +1250,7 @@ class _Requests_ScreenState extends State<Driver_Request>
                     )),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * .20,
+                height: 25,
               ),
               Container(
                 width: MediaQuery.of(context).size.width * .55,
@@ -1237,8 +1262,11 @@ class _Requests_ScreenState extends State<Driver_Request>
                 ),
                 child: MaterialButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => Driver_Settting(),));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Settings_Screen(),
+                        ));
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
