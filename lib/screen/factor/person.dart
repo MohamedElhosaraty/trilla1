@@ -1,11 +1,11 @@
-
-
 import 'dart:io';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:trilla1/core/api/end_Points.dart';
 
+import '../../cache/cache_helper.dart';
 import 'person_file.dart';
 
 class Person_Screen extends StatefulWidget {
@@ -16,18 +16,15 @@ class Person_Screen extends StatefulWidget {
 }
 
 class _Person_ScreenState extends State<Person_Screen> {
-
   File? image;
 
-  late ImageSource select =ImageSource.camera ;
+  late ImageSource select = ImageSource.camera;
 
   final imagePicker = ImagePicker();
 
-
-  uploadImage () async {
-
-    if(image == null ){
-      AwesomeDialog (
+  uploadImage() async {
+    if (image == null) {
+      AwesomeDialog(
         context: context,
         dialogType: DialogType.question,
         animType: AnimType.bottomSlide,
@@ -35,48 +32,47 @@ class _Person_ScreenState extends State<Person_Screen> {
           children: [
             InkWell(
               onTap: () async {
-                var pickerImage = await imagePicker.pickImage(
-                    source:  ImageSource.gallery
-                );
-                if (pickerImage != null ){
+                var pickerImage =
+                    await imagePicker.pickImage(source: ImageSource.gallery);
+                if (pickerImage != null) {
                   setState(() {
                     image = File(pickerImage.path);
                   });
-                }else{}
+                } else {}
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   const Text(
-                    'المعرض',style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black
-                  ),),
+                    'المعرض',
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black),
+                  ),
                   Icon(Icons.camera),
                 ],
               ),
             ),
             InkWell(
-              onTap:  () async {
-                var pickerImage = await imagePicker.pickImage(
-                    source:  ImageSource.camera
-                );
-                if (pickerImage != null ){
+              onTap: () async {
+                var pickerImage =
+                    await imagePicker.pickImage(source: ImageSource.camera);
+                if (pickerImage != null) {
                   setState(() {
                     image = File(pickerImage.path);
                   });
-                }else{}
+                } else {}
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   const Text(
-                    'الكاميرا',style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black
-                  ),
+                    'الكاميرا',
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black),
                   ),
                   Icon(Icons.camera_alt_outlined)
                 ],
@@ -86,21 +82,20 @@ class _Person_ScreenState extends State<Person_Screen> {
         ),
       ).show();
     }
-
   }
 
   List information = [
     {
-      'information' : 'الاسم',
-      'value' : 'Khaled Ramzy',
+      'information': 'الاسم',
+      'value': CacheHelper().getDataString(key: ApiKey.name) ?? "",
     },
     {
-      'information' : 'رقم الهاتف ',
-      'value' : '01554219639',
+      'information': 'رقم الهاتف ',
+      'value': CacheHelper().getDataString(key: ApiKey.phone) ?? "",
     },
     {
-      'information' : 'الرقم القومي',
-      'value' : '30208011207353',
+      'information': 'الرقم القومي',
+      'value': CacheHelper().getDataString(key: ApiKey.id) ?? "",
     },
   ];
 
@@ -110,33 +105,47 @@ class _Person_ScreenState extends State<Person_Screen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text('الملف الشخصي',style: TextStyle(
-            color:Color(0xff186987),fontWeight: FontWeight.w700,fontSize: 20
-        ),),
+        title: Text(
+          'الملف الشخصي',
+          style: TextStyle(
+              color: Color(0xff186987),
+              fontWeight: FontWeight.w700,
+              fontSize: 20),
+        ),
         centerTitle: true,
         leading: InkWell(
-          onTap: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Person_File(),));
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => Person_File(),
+            ));
           },
-          child: Text('  تعديل ',style: TextStyle(
-              color:Color(0xff999797),fontWeight: FontWeight.w700,fontSize: 20
-          ),),
+          child: Center(
+            child: Text(
+              '  تعديل ',
+              style: TextStyle(
+                  color: Color(0xff999797),
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20),
+            ),
+          ),
         ),
-        actions: [
-          IconButton(
-            onPressed: (){
-              Navigator.pop(context);
-            },
-            icon: Icon(
-              Icons.arrow_forward,color:Color(0xff186987),),
-          )
-        ],
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {
+        //       Navigator.pop(context);
+        //     },
+        //     icon: Icon(
+        //       Icons.arrow_forward,
+        //       color: Color(0xff186987),
+        //     ),
+        //   )
+        // ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children:  [
+          children: [
             const SizedBox(
               height: 95,
             ),
@@ -144,28 +153,34 @@ class _Person_ScreenState extends State<Person_Screen> {
               onTap: uploadImage,
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: image == null ? null :
-                FileImage(image!),
+                backgroundImage: image == null ? null : FileImage(image!),
                 backgroundColor: Color(0xffD9D9D9),
-                //child: Image.asset('assets/images/addImage.png'),
+                child: Image.network(
+                    CacheHelper().getDataString(key: ApiKey.image) ?? ""),
               ),
             ),
             const SizedBox(
               height: 15,
             ),
             Text(
-              'عميل',style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 18,color: Colors.black
-            ),),
+              CacheHelper().getDataString(key: ApiKey.type) == "user"
+                  ? 'عميل'
+                  : "سائق",
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18,
+                  color: Colors.black),
+            ),
             const SizedBox(
               height: 5,
             ),
             Text(
-              'خالد رمزي ابو زهره',style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 25,color: Color(0xff186987)
-            ),),
+              CacheHelper().getDataString(key: ApiKey.name) ?? "",
+              style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 25,
+                  color: Color(0xff186987)),
+            ),
             const SizedBox(
               height: 65,
             ),
@@ -173,10 +188,12 @@ class _Person_ScreenState extends State<Person_Screen> {
               width: double.infinity,
               alignment: Alignment.bottomRight,
               child: Text(
-                'المعلومات',style: TextStyle(
-                  fontSize: 18,fontWeight: FontWeight.w600,
-                  color: Color(0xff186987)
-              ),),
+                'المعلومات',
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xff186987)),
+              ),
             ),
             const SizedBox(
               height: 15,
@@ -192,24 +209,27 @@ class _Person_ScreenState extends State<Person_Screen> {
                     );
                   },
                   itemCount: information.length,
-                  itemBuilder: (context ,index){
+                  itemBuilder: (context, index) {
                     return Row(
                       children: [
                         Text(
-                          '${information[index]['value']}',style: TextStyle(
-                            fontWeight: FontWeight.w400,fontSize: 18,
-                            color: Color(0xff186987)
-                        ),),
+                          '${information[index]['value']}',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 18,
+                              color: Color(0xff186987)),
+                        ),
                         Spacer(),
                         Text(
-                          '${information[index]['information']}',style: TextStyle(
-                            fontWeight: FontWeight.w400,fontSize: 18,
-                            color: Colors.black
-                        ),),
+                          '${information[index]['information']}',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 18,
+                              color: Colors.black),
+                        ),
                       ],
                     );
-                  }
-              ),
+                  }),
             ),
             const Divider(
               color: Color(0xff999797),

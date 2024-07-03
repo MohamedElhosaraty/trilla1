@@ -4,11 +4,18 @@ import 'package:trilla1/core/api/api_interceptor.dart';
 import 'package:trilla1/core/api/end_Points.dart';
 import 'package:trilla1/core/errors/exception.dart';
 
+import '../../cache/cache_helper.dart';
+
 class DioConsumer extends ApiConsumer {
   final Dio dio;
 
   DioConsumer({required this.dio}) {
     dio.options.baseUrl = EndPoints.baseUrl;
+    dio.options.headers = {
+      "Authorization": CacheHelper().getDataString(
+        key: ApiKey.token,
+      ),
+    };
     dio.interceptors.add(ApiInterceptor());
     dio.interceptors.add(LogInterceptor(
       error: true,

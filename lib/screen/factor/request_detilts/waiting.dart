@@ -1,8 +1,12 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+import '../../../model/orders_model.dart';
 
 class Waiting_Screen extends StatelessWidget {
-  const Waiting_Screen({super.key});
+  final OrdersDataList model;
+  const Waiting_Screen({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -10,19 +14,24 @@ class Waiting_Screen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
-        title:const Text(
-          'تفاصيل الطلب',style: TextStyle(
-          fontWeight: FontWeight.w700,fontSize: 18,
-          color: Color(0xff186987),
-        ),),
+        title: const Text(
+          'تفاصيل الطلب',
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 18,
+            color: Color(0xff186987),
+          ),
+        ),
         centerTitle: true,
-        actions:[
+        actions: [
           IconButton(
-            onPressed: (){
+            onPressed: () {
               Navigator.pop(context);
             },
             icon: Icon(
-            Icons.arrow_forward,color: Colors.black,),
+              Icons.arrow_forward,
+              color: Colors.black,
+            ),
           ),
         ],
       ),
@@ -33,29 +42,31 @@ class Waiting_Screen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset('assets/images/clock.png',scale: 1.2,),
-                 Padding(
+                Image.asset(
+                  'assets/images/clock.png',
+                  scale: 1.2,
+                ),
+                Padding(
                   padding: const EdgeInsets.only(right: 15.0),
                   child: Text(
-                    'قيد الانتظار',style: TextStyle(
-                      fontSize: 18,fontWeight: FontWeight.w600,
-                      color: Color(0xff999797)
-                  ),),
+                    model.status,
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xff999797)),
+                  ),
                 ),
               ],
             ),
-            Divider(
-              thickness: 1,
-                color: Color(0xff999797)
-            ),
+            Divider(thickness: 1, color: Color(0xff999797)),
             Padding(
               padding: const EdgeInsets.only(right: 15.0),
               child: Text(
-                'رقم الطلب#',style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 18,
-                color: Colors.black
-              ),
+                '# ${model.id}',
+                style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 18,
+                    color: Colors.black),
               ),
             ),
             Padding(
@@ -74,17 +85,19 @@ class Waiting_Screen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          'المسافة ',style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                            color: Color(0xff999797)
-                        ),),
+                          model.deliveryCity,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Color(0xff999797)),
+                        ),
                         Text(
-                          ' السعر',style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                            color: Color(0xff999797)
-                        ),)
+                          model.price,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Color(0xff999797)),
+                        )
                       ],
                     ),
                   ),
@@ -100,17 +113,19 @@ class Waiting_Screen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          'نوع الشحنة',style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                            color: Color(0xff999797)
-                        ),),
+                          model.weight,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Color(0xff999797)),
+                        ),
                         Text(
-                          'وزن الشحنة',style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                            color: Color(0xff999797)
-                        ),)
+                          'وزن الشحنة',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Color(0xff999797)),
+                        )
                       ],
                     ),
                   ),
@@ -124,11 +139,14 @@ class Waiting_Screen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
-                      ' تاريخ التحميل',style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18,
-                        color: Color(0xff999797)
-                    ),),
+                      DateFormat(
+                        'EEE, dd MMM',
+                      ).format(model.date).toString(),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          color: Color(0xff999797)),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsetsDirectional.only(bottom: 30),
@@ -142,17 +160,19 @@ class Waiting_Screen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          'مكان التحميل ',style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                            color: Color(0xff999797)
-                        ),),
+                          model.loadStreet,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Color(0xff999797)),
+                        ),
                         Text(
-                          'مكان التوصيل ',style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                            color: Color(0xff999797)
-                        ),)
+                          model.deliveryStreet,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Color(0xff999797)),
+                        )
                       ],
                     ),
                   ),
@@ -166,21 +186,22 @@ class Waiting_Screen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
-                      '  ملاحظات',style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18,
-                        color: Color(0xff999797)
-                    ),),
+                      model.note,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          color: Color(0xff999797)),
+                    ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width*.60,
+                    width: MediaQuery.of(context).size.width * .60,
                     height: 60,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(  color: Color(0xff999797)),
+                      border: Border.all(color: Color(0xff999797)),
                     ),
                     child: MaterialButton(
-                        onPressed: (){
+                        onPressed: () {
                           AwesomeDialog(
                             context: context,
                             dialogType: DialogType.question,
@@ -189,31 +210,35 @@ class Waiting_Screen extends StatelessWidget {
                             titleTextStyle: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 18,
-                                color: Colors.black
-                            ),
-                            desc: 'سيتم حذف الطلب نهائيًا ولن تتمكن من الوصول إليه مجددًا',
+                                color: Colors.black),
+                            desc:
+                                'سيتم حذف الطلب نهائيًا ولن تتمكن من الوصول إليه مجددًا',
                             descTextStyle: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 16,
-                                color: Color(0xff999797)
-                            ),
+                                color: Color(0xff999797)),
                             btnCancel: TextButton(
-                              onPressed : (){},
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
                               child: const Text(
-                                'إلغاء',style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black
-                              ),),
+                                'إلغاء',
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black),
+                              ),
                             ),
                             btnOk: TextButton(
-                              onPressed:    (){},
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
                               child: const Text(
-                                'تأكيد',style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xffBB1515)
-                              ),
+                                'تأكيد',
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500,
+                                    color: Color(0xffBB1515)),
                               ),
                             ),
                           ).show();
@@ -222,18 +247,22 @@ class Waiting_Screen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              ' حذف الطلب',style: TextStyle(
-                                fontWeight: FontWeight.w600,fontSize: 18,
-                                color: Colors.black
-                            ),),
+                              ' حذف الطلب',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 18,
+                                  color: Colors.black),
+                            ),
                             Padding(
                               padding: const EdgeInsets.only(left: 30.0),
                               child: Icon(
-                                Icons.delete,color: Colors.red,size: 40,),
+                                Icons.delete,
+                                color: Colors.red,
+                                size: 40,
+                              ),
                             ),
                           ],
-                        )
-                    ),
+                        )),
                   ),
                 ],
               ),

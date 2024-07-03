@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+import '../../../model/orders_model.dart';
 
 class Accept_Screen extends StatelessWidget {
-  const Accept_Screen({super.key});
+  final OrdersDataList model;
+  const Accept_Screen({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -9,19 +13,24 @@ class Accept_Screen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
-        title:const Text(
-          'تفاصيل الطلب',style: TextStyle(
-          fontWeight: FontWeight.w700,fontSize: 18,
-          color: Color(0xff186987),
-        ),),
+        title: const Text(
+          'تفاصيل الطلب',
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 18,
+            color: Color(0xff186987),
+          ),
+        ),
         centerTitle: true,
-        actions:[
+        actions: [
           IconButton(
-            onPressed: (){
+            onPressed: () {
               Navigator.pop(context);
             },
             icon: Icon(
-              Icons.arrow_forward,color: Colors.black,),
+              Icons.arrow_forward,
+              color: Colors.black,
+            ),
           ),
         ],
       ),
@@ -30,7 +39,7 @@ class Accept_Screen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 10.0,left: 10),
+              padding: const EdgeInsets.only(top: 10.0, left: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -38,31 +47,33 @@ class Accept_Screen extends StatelessWidget {
                     radius: 20,
                     backgroundColor: Color(0xff186987),
                     child: Icon(
-                      Icons.check,size: 40,color: Colors.white,),
+                      Icons.check,
+                      size: 40,
+                      color: Colors.white,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 15.0),
                     child: Text(
-                      ' تمت ',style: TextStyle(
-                        fontSize: 18,fontWeight: FontWeight.w600,
-                        color: Color(0xff15BB1B)
-                    ),),
+                      ' تمت ',
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff15BB1B)),
+                    ),
                   ),
                 ],
               ),
             ),
-            Divider(
-                thickness: 1,
-                color: Color(0xff999797)
-            ),
+            Divider(thickness: 1, color: Color(0xff999797)),
             Padding(
               padding: const EdgeInsets.only(right: 15.0),
               child: Text(
-                'رقم الطلب#',style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18,
-                  color: Colors.black
-              ),
+                'رقم الطلب#',
+                style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 18,
+                    color: Colors.black),
               ),
             ),
             Padding(
@@ -81,17 +92,19 @@ class Accept_Screen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          'المسافة ',style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                            color: Color(0xff999797)
-                        ),),
+                          "${model.price} ج.م",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Color(0xff999797)),
+                        ),
                         Text(
-                          ' السعر',style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                            color: Color(0xff999797)
-                        ),)
+                          ' السعر',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Color(0xff999797)),
+                        )
                       ],
                     ),
                   ),
@@ -107,17 +120,19 @@ class Accept_Screen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          'نوع الشحنة',style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                            color: Color(0xff999797)
-                        ),),
+                          model.title,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Color(0xff999797)),
+                        ),
                         Text(
-                          'وزن الشحنة',style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                            color: Color(0xff999797)
-                        ),)
+                          model.weight,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Color(0xff999797)),
+                        )
                       ],
                     ),
                   ),
@@ -131,11 +146,14 @@ class Accept_Screen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
-                      ' تاريخ التحميل',style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18,
-                        color: Color(0xff999797)
-                    ),),
+                      DateFormat(
+                        'EEE, dd MMM',
+                      ).format(model.date).toString(),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          color: Color(0xff999797)),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsetsDirectional.only(bottom: 30),
@@ -149,17 +167,19 @@ class Accept_Screen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          'مكان التحميل ',style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                            color: Color(0xff999797)
-                        ),),
+                          model.loadStreet,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Color(0xff999797)),
+                        ),
                         Text(
-                          'مكان التوصيل ',style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                            color: Color(0xff999797)
-                        ),)
+                          model.deliveryStreet,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Color(0xff999797)),
+                        )
                       ],
                     ),
                   ),
@@ -173,11 +193,12 @@ class Accept_Screen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
-                      '  ملاحظات',style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18,
-                        color: Color(0xff999797)
-                    ),),
+                      model.note,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          color: Color(0xff999797)),
+                    ),
                   ),
                 ],
               ),

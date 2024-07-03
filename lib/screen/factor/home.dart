@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trilla1/screen/factor/addrequest.dart';
 import 'package:trilla1/screen/factor/category.dart';
 import 'package:trilla1/screen/factor/notification.dart';
 import 'package:trilla1/screen/factor/settings.dart';
 
+import '../../cache/cache_helper.dart';
+import '../../core/api/end_Points.dart';
 import 'person.dart';
-
 
 class Home_Screen extends StatelessWidget {
   const Home_Screen({super.key});
@@ -17,19 +19,27 @@ class Home_Screen extends StatelessWidget {
         foregroundColor: Color(0xff186987),
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text('الطلبات',style: TextStyle(
-            color:Color(0xff186987),fontWeight: FontWeight.w700,fontSize: 20
-        ),),
+        title: Text(
+          'الطلبات',
+          style: TextStyle(
+              color: Color(0xff186987),
+              fontWeight: FontWeight.w700,
+              fontSize: 20),
+        ),
         centerTitle: true,
         leading: IconButton(
-          onPressed: (){
-            Navigator.push(context, MaterialPageRoute(
-              builder: (context) => Notification_Screen(),));
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Notification_Screen(),
+                ));
           },
           icon: Icon(
             Icons.notifications_outlined,
-            color:Color(0xff186987),
-            size: 30,),
+            color: Color(0xff186987),
+            size: 30,
+          ),
         ),
       ),
       endDrawer: Drawer(
@@ -38,17 +48,20 @@ class Home_Screen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: 60,
+                height: 60.h,
               ),
               Container(
-               alignment: Alignment.bottomLeft,
+                alignment: Alignment.bottomLeft,
                 width: double.infinity,
                 child: IconButton(
-                  onPressed: (){
+                  onPressed: () {
                     Navigator.pop(context);
                   },
                   icon: Icon(
-                    Icons.close,size: 30,color: Colors.black,),
+                    Icons.close,
+                    size: 30,
+                    color: Colors.black,
+                  ),
                 ),
               ),
               SizedBox(
@@ -60,61 +73,64 @@ class Home_Screen extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                        'عميل',style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black
+                        CacheHelper().getDataString(key: ApiKey.type) == "user"
+                            ? 'عميل'
+                            : "سائق",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black),
                       ),
-                      ),
-                      Text(
-                        ':  الاسم   ',style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xff186987)
-                      ),
+                      SizedBox(
+                        width: 150.w,
+                        child: Text(
+                          '${CacheHelper().getDataString(key: ApiKey.name)}:  الاسم   ',
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xff186987)),
+                        ),
                       ),
                     ],
                   ),
                   CircleAvatar(
-                    radius: 50,
-                    backgroundColor: Color(0x8d8f9397),
-                    child: Icon(
-                      Icons.person,size: 60,
-                      color: Colors.white,),
-                  ),
+                      radius: 50,
+                      backgroundColor: Color(0x8d8f9397),
+                      child: Image.network(
+                          CacheHelper().getDataString(key: ApiKey.image) ??
+                              "")),
                 ],
               ),
               SizedBox(
                 height: 65,
               ),
-              Image.asset(
-                  'assets/images/drawer.png'
+              Image.asset('assets/images/drawer.png'),
+              SizedBox(
+                height: 17,
+              ),
+              Text(
+                ' 0 ',
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                    color: Color(0xff186987)),
               ),
               SizedBox(
                 height: 17,
               ),
               Text(
-                ' 0 ',style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xff186987)
-              ),
-              ),
-              SizedBox(
-                height: 17,
-              ),
-              Text(
-                ' إجمالي الطلبات ',style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xff186987)
-              ),
+                ' إجمالي الطلبات ',
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xff186987)),
               ),
               SizedBox(
-                height: 50,
+                height: 50.h,
               ),
               Container(
-                width: MediaQuery.of(context).size.width*.45,
+                width: MediaQuery.of(context).size.width * .45,
                 height: 60,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -122,24 +138,26 @@ class Home_Screen extends StatelessWidget {
                   border: Border.all(),
                 ),
                 child: MaterialButton(
-                    onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => Person_Screen(),));
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Person_Screen(),
+                          ));
                     },
                     child: Text(
-                      'الملف الشخصي ',style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                        color: Colors.white
-                    ),
-                    )
-                ),
+                      'الملف الشخصي ',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18,
+                          color: Colors.white),
+                    )),
               ),
               SizedBox(
                 height: 25,
               ),
               Container(
-                width: MediaQuery.of(context).size.width*.45,
+                width: MediaQuery.of(context).size.width * .5,
                 height: 60,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -147,34 +165,35 @@ class Home_Screen extends StatelessWidget {
                   border: Border.all(),
                 ),
                 child: MaterialButton(
-                    onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => Category_Screen(),));
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Category_Screen(),
+                          ));
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          'القسائم ',style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 18,
-                            color: Colors.white
-                        ),
+                          'القسائم ',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18,
+                              color: Colors.white),
                         ),
                         SizedBox(
-                          width: 20,),
-                        Image.asset(
-                            'assets/images/drawer2.png'
+                          width: 20,
                         ),
+                        Image.asset('assets/images/drawer2.png'),
                       ],
-                    )
-                ),
+                    )),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height*.20,
+                height: 20.h,
               ),
               Container(
-                width: MediaQuery.of(context).size.width*.55,
+                width: MediaQuery.of(context).size.width * .55,
                 height: 60,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -182,25 +201,32 @@ class Home_Screen extends StatelessWidget {
                   border: Border.all(),
                 ),
                 child: MaterialButton(
-                  onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => Settings_Screen(),));
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Settings_Screen(),
+                        ));
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        'الاعدادات ',style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
+                        'الاعدادات ',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
                       ),
                       SizedBox(
-                        width: 20,),
+                        width: 20,
+                      ),
                       Icon(
-                        Icons.settings,size: 40,
-                        color: Color(0xff186987),),
+                        Icons.settings,
+                        size: 40,
+                        color: Color(0xff186987),
+                      ),
                     ],
                   ),
                 ),
@@ -214,53 +240,50 @@ class Home_Screen extends StatelessWidget {
       ),
       body: Column(
         children: [
-
           Container(
-            height: MediaQuery.of(context).size.height/3,
-            color: Colors.blue.shade200,
-            alignment: Alignment.center,
-            child :const Text.rich(
-              textDirection: TextDirection.rtl,
-              TextSpan(
-                text: 'شُحنتي',
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 22,
-                  color: Colors.black,
-                ),
-                children: [
+              height: MediaQuery.of(context).size.height / 3.1,
+              color: Colors.blue.shade200,
+              alignment: Alignment.center,
+              child: const Text.rich(
+                  textDirection: TextDirection.rtl,
                   TextSpan(
-                    text: "، نحن ندرك أن السفر لمسافات طويله مرهق",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                    ),
-                  ),
-                  TextSpan(
-                    text: "   \n\n        نحن هٌنا لخدمتك ..",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.black,
-                    ),
-                  )
-                ]
-              )
-            )
-          ),
+                      text: 'شُحنتي',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 22,
+                        color: Colors.black,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: "، نحن ندرك أن السفر لمسافات طويله مرهق",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
+                        ),
+                        TextSpan(
+                          text: "   \n\n        نحن هٌنا لخدمتك ..",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.black,
+                          ),
+                        )
+                      ]))),
           Stack(
             children: [
-              Image.asset("assets/images/car1.jpg",),
+              Image.asset(
+                "assets/images/car1.jpg",
+              ),
               Container(
-                margin: EdgeInsets.all(50),
-                height: 200,
-                width: MediaQuery.of(context).size.width*.80,
+                margin: EdgeInsets.all(45),
+                height: 190.h,
+                width: MediaQuery.of(context).size.width * .80,
                 alignment: Alignment.center,
-                decoration:const BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Colors.black54,
-                    borderRadius: BorderRadius.all(Radius.circular(15))
-                ),
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -272,37 +295,35 @@ class Home_Screen extends StatelessWidget {
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
                               fontSize: 18,
-                              color: Colors.white
-                          ),
+                              color: Colors.white),
                           children: [
-                            TextSpan(
-                                text: " \n\nهل تحتاج لشحن البضائع ؟    "
-                            )
-                          ]
-                      ),
-
+                            TextSpan(text: " \n\nهل تحتاج لشحن البضائع ؟    ")
+                          ]),
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height*.05,
+                      height: MediaQuery.of(context).size.height * .05,
                     ),
                     Container(
-                      height: 40,
-                      width: MediaQuery.of(context).size.width*.35,
-                      decoration:const BoxDecoration(
+                      height: 40.h,
+                      width: MediaQuery.of(context).size.width * .35,
+                      decoration: const BoxDecoration(
                         color: Color(0xff186987),
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
                       child: MaterialButton(
-                        onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(
-                            builder: (context) => AddRequest(),));
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AddRequest(),
+                              ));
                         },
                         child: Text(
-                          'طلب شحنه الآن',style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white
-                        ),
+                          'طلب شحنه الآن',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white),
                         ),
                       ),
                     ),

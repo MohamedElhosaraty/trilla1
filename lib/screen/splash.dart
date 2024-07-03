@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:trilla1/core/api/end_Points.dart';
 import 'package:trilla1/screen/welcome.dart';
+
+import '../cache/cache_helper.dart';
+import 'driver/driver_bar.dart';
+import 'factor/bottombar.dart';
 
 class Splash_Screen extends StatefulWidget {
   const Splash_Screen({super.key});
@@ -14,10 +19,21 @@ class _Splash_ScreenState extends State<Splash_Screen> {
   void initState() {
     Future.delayed(
         Duration(seconds: 5),
-        () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Welcome_Screen(),
+        () => Navigator.push(context, MaterialPageRoute(
+              builder: (context) {
+                if ((CacheHelper().getDataString(key: ApiKey.token) != null ||
+                        CacheHelper().getDataString(key: ApiKey.token) != "") &&
+                    CacheHelper().getDataString(key: ApiKey.type) == "user") {
+                  return Bottom_Navigation();
+                } else if ((CacheHelper().getDataString(key: ApiKey.token) !=
+                            null ||
+                        CacheHelper().getDataString(key: ApiKey.token) != "") &&
+                    CacheHelper().getDataString(key: ApiKey.type) == "driver") {
+                  return Driver_bar();
+                } else {
+                  return Welcome_Screen();
+                }
+              },
             )));
     super.initState();
   }

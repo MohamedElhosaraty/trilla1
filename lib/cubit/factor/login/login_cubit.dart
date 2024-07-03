@@ -14,31 +14,37 @@ class LoginCubit extends Cubit<LoginState> {
 
   LoginModel? userLogin;
 
-  login({required String phone , required String password}) async
-  {
+  login({required String phone, required String password}) async {
     try {
       emit(LoginLoadedState());
       final response = await api.post(
-        EndPoints.login,
-        isFormData:  true,
-        data: {
-          ApiKey.phone : phone,
-          ApiKey.password : password,
-        }
-      );
+          CacheHelper().getDataString(key: ApiKey.type) == "user"
+              ? EndPoints.login
+              : "/api/driver/login",
+          isFormData: true,
+          data: {
+            ApiKey.phone: phone,
+            ApiKey.password: password,
+          });
 
       userLogin = LoginModel.fromJson(response);
 
-      if(userLogin?.status == true){
+      if (userLogin?.status == true) {
         CacheHelper().saveData(key: ApiKey.token, value: userLogin?.data.token);
+        CacheHelper()
+            .saveData(key: ApiKey.name, value: userLogin?.data.user.name);
+        CacheHelper()
+            .saveData(key: ApiKey.phone, value: userLogin?.data.user.phone);
+        CacheHelper()
+            .saveData(key: ApiKey.image, value: userLogin?.data.user.image);
+        CacheHelper().saveData(
+            key: ApiKey.id, value: userLogin?.data.user.identityNumber);
         emit(LoginSuccessState(loginModel: userLogin!));
-      }else{
+      } else {
         emit(LoginFailureState(errorMessage: userLogin!.message));
       }
     } on ServerException catch (e) {
       emit(LoginFailureState(errorMessage: e.errorModel.message));
     }
-
-
   }
 }
